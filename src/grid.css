@@ -145,7 +145,7 @@
   transition: opacity var(--fast), transform var(--fast), filter var(--fast);
 }
 
-svg.img {
+svg.img text {
   fill: currentColor;
   text-anchor: middle;
   dominant-baseline: middle;
