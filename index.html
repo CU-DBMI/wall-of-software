@@ -73,7 +73,7 @@
               <span
                 x-text="char"
                 class="char"
-                :style="{'--delay': index * 75 + 'ms'}"
+                :style="{ '--delay': index * 75 + 'ms' }"
               />
             </template>
             <template x-if="wordIndex === 2">
@@ -166,7 +166,7 @@
                 target="_blank"
                 :data-tooltip="
                   entry.description.length > 60
-                    ? entry.description.slice(0,60) + '...'
+                    ? entry.description.slice(0, 60 - 3) + '...'
                     : entry.description
                 "
               >

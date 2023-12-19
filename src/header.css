@@ -38,12 +38,8 @@ h1 {
   10% {
     color: var(--dark);
   }
-  2.5%,
-  7.5% {
-    color: var(--mid);
-  }
   5% {
-    color: var(--light);
+    color: var(--mid);
   }
 }
 
