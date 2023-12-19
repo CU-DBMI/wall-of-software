@@ -1,3 +1,5 @@
+// header background visualization
+
 import {
   BufferGeometry,
   CanvasTexture,
@@ -43,7 +45,7 @@ const rand = (min = 0, max = 1) => min + Math.random() * (max - min);
 // round to multiple
 const round = (value, multiple) => multiple * Math.floor(value / multiple);
 
-// triangle ramp
+// triangle
 const ramp = (value, mid = 0.25) => {
   if (value < 0) return 0;
   if (value < mid) return value / mid;
@@ -51,15 +53,15 @@ const ramp = (value, mid = 0.25) => {
   return 0;
 };
 
-// main objects
+// three js main objects
 const canvas = document.querySelector("canvas");
 const renderer = new WebGLRenderer({ canvas: canvas, alpha: true });
 const scene = new Scene();
 const camera = new PerspectiveCamera(45, 1, 0.01, 100);
 const clock = new Clock();
 
-// resize scene
-const resize = () => {
+// resize/reset scene/camera
+const reset = () => {
   camera.aspect = canvas.clientWidth / canvas.clientHeight;
   camera.position.set(0, 0, -15);
   camera.lookAt(0, 0, 0);
@@ -68,8 +70,8 @@ const resize = () => {
   renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
 };
-resize();
-window.addEventListener("resize", resize);
+reset();
+window.addEventListener("resize", reset);
 
 // get color palette
 const style = window.getComputedStyle(document.documentElement);
@@ -96,6 +98,7 @@ for (let z = helixMinZ; z <= helixMaxZ; z += helixStep) {
   const color = mid.clone().lerpHSL(light, percent);
   colors.push(color.r, color.g, color.b);
 
+  // connect strands with a pair at z integer intervals
   if (Math.abs(z - Math.round(z)) < 0.001) {
     pairPoints.push(x, y, z, -x, -y, z);
     const { r, g, b } = color;
@@ -117,7 +120,7 @@ const pairMaterial = new LineMaterial({
   vertexColors: true,
 });
 
-// left strand
+// left strand object
 const leftStrandGeometry = new LineGeometry();
 leftStrandGeometry.setPositions(leftPoints);
 leftStrandGeometry.setColors(colors);
@@ -126,7 +129,7 @@ leftStrand.name = "helix";
 leftStrand.rotation.x = tau / 4;
 scene.add(leftStrand);
 
-// right strand
+// right strand object
 const rightStrandGeometry = new LineGeometry();
 rightStrandGeometry.setPositions(rightPoints);
 rightStrandGeometry.setColors(colors);
@@ -134,15 +137,6 @@ const rightStrand = new Line2(rightStrandGeometry, strandMaterial);
 rightStrand.name = "helix";
 rightStrand.rotation.x = tau / 4;
 scene.add(rightStrand);
-
-// pairs
-const pairGeometry = new LineSegmentsGeometry();
-pairGeometry.setPositions(pairPoints);
-pairGeometry.setColors(pairColors);
-const pairs = new LineSegments2(pairGeometry, pairMaterial);
-pairs.name = "helix";
-pairs.rotation.x = tau / 4;
-scene.add(pairs);
 
 // get random point on strands
 const getStrandPoint = () => {
@@ -155,7 +149,16 @@ const getStrandPoint = () => {
   );
 };
 
-// particle materials
+// pairs object
+const pairGeometry = new LineSegmentsGeometry();
+pairGeometry.setPositions(pairPoints);
+pairGeometry.setColors(pairColors);
+const pairs = new LineSegments2(pairGeometry, pairMaterial);
+pairs.name = "helix";
+pairs.rotation.x = tau / 4;
+scene.add(pairs);
+
+// particles
 for (const char of particleChars) {
   // draw char on canvas
   const canvas = document.createElement("canvas");
@@ -186,17 +189,17 @@ for (const char of particleChars) {
   geometry.setAttribute("position", new Float32BufferAttribute(points, 3));
   geometry.setAttribute("color", new Float32BufferAttribute(colors, 3));
 
-  // add layer to scene
-  const particles = new Points(geometry, material);
-  particles.name = "particle";
-  particles.userData = Array(particleCount)
+  // particle object
+  const particle = new Points(geometry, material);
+  particle.name = "particle";
+  particle.userData = Array(particleCount)
     .fill()
     .map(() => ({
       life: rand(),
       acceleration: new Vector3(),
       velocity: new Vector3(),
     }));
-  scene.add(particles);
+  scene.add(particle);
 }
 
 // render frame
@@ -204,6 +207,7 @@ const frame = () => {
   // time since last tick
   const delta = Math.min(0.1, clock.getDelta());
 
+  // for each element in scene
   for (const child of scene.children) {
     if (child.name === "helix") {
       // spin
@@ -215,6 +219,7 @@ const frame = () => {
       const positionAttr = child.geometry.getAttribute("position");
       const colorAttr = child.geometry.getAttribute("color");
 
+      // loop through other "buffers"
       for (let [index, particle] of Object.entries(child.userData)) {
         // cast to number
         index = +index;
@@ -275,7 +280,7 @@ const frame = () => {
 
 frame();
 
-// move camera on mouse move
+// on mouse move
 const mouse = (event) => {
   // get x/y from -1 to 1
   const x = event ? -1 + 2 * (event.clientX / window.innerWidth) : 0;

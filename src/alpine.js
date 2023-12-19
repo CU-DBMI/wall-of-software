@@ -1,3 +1,5 @@
+// reactive render html
+
 document.addEventListener("alpine:init", async () => {
   // init store
   Alpine.store("store", {
@@ -18,7 +20,7 @@ document.addEventListener("alpine:init", async () => {
   // set title
   Alpine.store("store").set("title", title);
 
-  // load json
+  // load list
   const list = await (await fetch("list.json")).json();
   // shuffle
   for (let i = list.length - 1; i > 0; i--) {
@@ -29,7 +31,7 @@ document.addEventListener("alpine:init", async () => {
   // set list
   Alpine.store("store").set("list", list);
 
-  // set number of cols on resize
+  // set number of cols on window resize
   function updateCols() {
     Alpine.store("store").set(
       "cols",

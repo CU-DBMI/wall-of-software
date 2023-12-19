@@ -20,7 +20,7 @@
       property="og:description"
       content="The many software produced by the CU Department of Biomedical Informatics."
     />
-    <!-- <meta property="og:image" content="share.jpg" /> -->
+    <meta property="og:image" content="src/share.jpg" />
 
     <!-- ---------- FAVICON ---------- -->
 
@@ -43,9 +43,12 @@
     <!-- ---------- INCLUDES ---------- -->
 
     <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="src/util.css" />
+    <link rel="stylesheet" href="src/header.css" />
+    <link rel="stylesheet" href="src/grid.css" />
 
     <script src="https://unpkg.com/alpinejs@3.x.x" defer crossorigin></script>
-    <script type="importmap">
+    <script type="importmap" defer crossorigin>
       {
         "imports": {
           "three": "https://unpkg.com/three@0.159.0/build/three.module.js",
@@ -53,9 +56,8 @@
         }
       }
     </script>
-
+    <script type="module" src="src/viz.js" defer></script>
     <script src="src/alpine.js"></script>
-    <script type="module" src="src/viz.js"></script>
   </head>
 
   <body>
@@ -140,7 +142,7 @@
           <i>tools, packages, workflows, resources, and other software</i>
           developed at or in collaboration with the
           <a href="https://medschool.cuanschutz.edu/dbmi" target="_blank"
-            >Department of Biomedical Informatics at the University of
+            >Department of Biomedical Informatics (DBMI) at the University of
             Colorado</a
           >.
         </p>
@@ -156,8 +158,15 @@
               }"
               class="cell"
             >
-              <a class="hex" tabindex="0" :href="entry.link" target="_blank">
-                <!-- hexagon fill shape -->
+              <a
+                class="hex"
+                tabindex="0"
+                :href="entry.link"
+                target="_blank"
+                :data-tooltip="entry.description"
+              >
+                <!-- HEXAGON FILL SHAPE -->
+
                 <svg viewBox="-0.866 -1 1.732 2" class="shape">
                   <path
                     class="stroke"
@@ -186,7 +195,7 @@
                   />
                 </svg>
 
-                <!-- background image -->
+                <!-- BACKGROUND IMAGE -->
 
                 <div class="image">
                   <svg viewBox="-30 -22 60 40" class="img">
@@ -203,17 +212,11 @@
                   />
                 </div>
 
-                <!-- text content -->
+                <!-- TEXT CONTENT -->
 
-                <div class="text">
-                  <template x-if="entry.name">
-                    <div x-text="entry.name"></div>
-                  </template>
-
-                  <template x-if="entry.description">
-                    <div x-text="entry.description" class="truncate"></div>
-                  </template>
-                </div>
+                <template x-if="entry.name">
+                  <div x-text="entry.name" class="text"></div>
+                </template>
               </a>
             </div>
           </template>

@@ -1,0 +1,83 @@
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.button {
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 10px;
+  border-radius: 5px;
+  background: var(--dark);
+  color: var(--white);
+  transition: color var(--fast), background var(--fast);
+}
+
+.button:is(:hover, :focus-visible) {
+  background: var(--light);
+  color: var(--dark);
+}
+
+.button::after {
+  z-index: 1;
+  position: absolute;
+  inset: -7.5px;
+  border: dashed 2px transparent;
+  border-radius: 10px;
+  content: "";
+  pointer-events: none;
+}
+
+.button:is(:hover, :focus-visible)::after {
+  animation: button 1s ease-in-out;
+}
+
+@keyframes button {
+  0%,
+  100% {
+    clip-path: inset(0 0 97% 0);
+  }
+  25% {
+    clip-path: inset(0 97% 0 0);
+  }
+  50% {
+    clip-path: inset(97% 0 0 0);
+  }
+  75% {
+    clip-path: inset(0 0 0 97%);
+  }
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  10% {
+    border-color: var(--dark);
+  }
+  50% {
+    border-color: var(--mid);
+  }
+  90% {
+    border-color: var(--light);
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  height: 1em;
+}
+
+.icon path {
+  fill: currentColor;
+}
+
+.truncate {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  max-width: 100%;
+  overflow: hidden;
+}
