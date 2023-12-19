@@ -24,13 +24,13 @@ const strandSize = 0.3;
 const pairSize = 0.1;
 const helixMinZ = -10;
 const helixMaxZ = 10;
-const helixRadis = 1.75;
+const helixRadius = 1.75;
 const helixStep = 0.1;
 const helixTwist = 1 / 15;
 const helixTilt = 16;
 
 // particle props
-const particleSize = 0.85;
+const particleSize = 0.75;
 const particleChars = ["0", "1"];
 const particleCount = 150;
 const particleAcceleration = (position) => new Vector3(position.x * 0.5, 1, 0);
@@ -89,8 +89,8 @@ for (let z = helixMinZ; z <= helixMaxZ; z += helixStep) {
   const percent = (z - helixMinZ) / (helixMaxZ - helixMinZ);
 
   // position
-  const x = Math.sin(-helixTwist * tau * z) * helixRadis;
-  const y = Math.cos(-helixTwist * tau * z) * helixRadis;
+  const x = Math.sin(-helixTwist * tau * z) * helixRadius;
+  const y = Math.cos(-helixTwist * tau * z) * helixRadius;
   leftPoints.push(x, y, z);
   rightPoints.push(-x, -y, z);
 

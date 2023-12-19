@@ -12,7 +12,7 @@ To start, [open a pull request in this repo](https://github.com/CU-DBMI/wall-of-
 
 - Add an _entry_ to **the top** of `list.json`.
   - A short ~3-20 char name.
-  - A short ~10-30 char description.
+  - A short ~20-60 char description.
   - A link to a website or repo.
 - Add a _web-friendly_ image to `/images`.
   - Filename **must** be lowercase, kebab-case version of entry name, e.g. _Word Lapse_ → `word-lapse`.

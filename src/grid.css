@@ -54,7 +54,6 @@
   position: absolute;
   bottom: calc(100% + 5px);
   background: var(--dark);
-  box-shadow: 0 0 10px var(--light);
   color: var(--white);
   opacity: 0;
   pointer-events: none;
@@ -76,12 +75,11 @@
 }
 
 .hex::before {
-  width: 150%;
+  width: 175%;
   max-width: max-content;
   padding: 10px 15px;
   border-radius: 5px;
   content: attr(data-tooltip);
-  inline-size: max-content;
 }
 
 .hex:hover::before,
@@ -169,7 +167,7 @@ svg.img {
   gap: 5px;
   transform: scale(0.9);
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   opacity: 0;
   transition: opacity var(--fast), transform var(--fast);
 }

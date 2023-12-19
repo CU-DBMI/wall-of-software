@@ -55,7 +55,7 @@ h2 {
 h2 .icon {
   position: relative;
   top: 0.15em;
-  margin-right: 0.75em;
+  margin-right: 0.5em;
   color: var(--dark);
 }
 

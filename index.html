@@ -91,8 +91,9 @@
         >
           <path
             d="m39.397 169.55h43.396v34.827l26.321 26.084h86.707l26.392-26.084v-95.493h17.065v-34.895h-52.341v121.62h-69.261v-26.06h26.211l26.008-26.051v-34.615h-34.887v25.863h-17.332v-60.758h-52.192v34.895h17.308v25.863h-34.683v-87.027h86.899v26.269h34.887v-34.754l-26.008-26.075h-104.49l-26.102 26.063v104.28l26.102 26.051"
-          /></svg
-        >Department of Biomedical Informatics
+          />
+        </svg>
+        Department of Biomedical Informatics
       </h2>
     </header>
 
@@ -153,7 +154,7 @@
           <template x-for="(entry, index) in $store.store.list">
             <div
               :style="{
-                '--offset': Math.floor(index / $store.store.cols) % 2 ? -1 : 1,
+                '--offset': Math.floor(index / $store.store.cols) % 2 ? -1 : 1, 
                 '--delay': (Math.random() + index / $store.store.cols / 4) + 's'
               }"
               class="cell"
@@ -163,7 +164,11 @@
                 tabindex="0"
                 :href="entry.link"
                 target="_blank"
-                :data-tooltip="entry.description"
+                :data-tooltip="
+                  entry.description.length > 60
+                    ? entry.description.slice(0,60) + '...'
+                    : entry.description
+                "
               >
                 <!-- HEXAGON FILL SHAPE -->
 
