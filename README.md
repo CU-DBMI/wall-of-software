@@ -1,9 +1,9 @@
 # CU DBMI Wall of Software
 
+### [✨ **VIEW THE WALL**](https://CU-DBMI.github.io/wall-of-software)
+
 The [Department of Biomedical Informatics (DBMI) at the University of Colorado](https://medschool.cuanschutz.edu/dbmi) investigates complex problems in medicine and biology using integrated computational technology.
 This repository and website contains a non-comprehensive list of tools, packages, workflows, resources, and other software that have been developed by our diverse group researchers, scientists, developers, and collaborators in support of [our mission](https://medschool.cuanschutz.edu/dbmi/about-us).
-
-[⭐️⭐️ View the List ⭐️⭐️](https://CU-DBMI.github.io/wall-of-software)
 
 ## Submit Your Software
 
@@ -19,7 +19,7 @@ To start, [open a pull request in this repo](https://github.com/CU-DBMI/wall-of-
   - **Must** have extension `.jpg`.
   - Roughly square.
   - Enough margins for main content to fit nicely inside hexagon.
-  - Larger than ~400px × 400px , smaller than ~1000px × 1000px 
+  - Larger than ~400px × 400px , smaller than ~1000px × 1000px
   - Better than ~80% jpeg compression level, smaller than ~50 kB.
 
 Shortly after opening a PR, a link should appear to a preview of the site with your changes.
