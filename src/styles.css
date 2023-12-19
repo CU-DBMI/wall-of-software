@@ -1,0 +1,118 @@
+:root {
+  --black: #000000;
+  --dark: #0f3d5c;
+  --mid: #1ea1a3;
+  --light: #ccf2e2;
+  --white: #fffef8;
+
+  --fast: 0.2s ease-in-out;
+}
+
+*:where(:not(html, iframe, svg, img):not(svg *)) {
+  all: unset;
+  display: revert;
+}
+
+* {
+  text-underline-offset: 0.2em;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  color: var(--black);
+  font-size: 14pt;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+main > section:last-child {
+  flex-grow: 1;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px max(40px, (100% - 1200px) / 2);
+  gap: 60px;
+  background: var(--white);
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+i {
+  font-style: italic;
+}
+
+a {
+  cursor: pointer;
+  transition: color var(--fast);
+}
+
+p {
+  max-width: 820px;
+  line-height: 2;
+  text-align: justify;
+}
+
+p a {
+  text-decoration-line: underline;
+}
+
+p a:is(:hover, :focus) {
+  color: var(--mid);
+}
+
+header {
+  display: flex;
+  position: relative;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  padding: 150px 20px;
+  gap: 10px;
+  background: var(--light);
+  font-weight: 300;
+  text-align: center;
+}
+
+header > * {
+  z-index: 1;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 30px;
+  background: var(--dark);
+  color: var(--white);
+  text-align: center;
+}
+
+footer a:is(:hover, :focus) {
+  color: var(--mid);
+}

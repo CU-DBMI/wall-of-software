@@ -1,0 +1,89 @@
+h1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 20px;
+  color: var(--dark);
+  font-size: 2.5rem;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+.word {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.char {
+  text-transform: uppercase;
+  animation: title1 0.5s var(--delay) both, title2 5s var(--delay) infinite;
+}
+
+@keyframes title1 {
+  from {
+    display: none;
+  }
+}
+
+@keyframes title2 {
+  0%,
+  10% {
+    color: var(--dark);
+  }
+  5% {
+    color: var(--mid);
+  }
+}
+
+h2 {
+  font-size: 1.2rem;
+  animation: subtitle 2s 1s both;
+}
+
+h2 .icon {
+  position: relative;
+  top: 0.15em;
+  margin-right: 0.5em;
+  color: var(--dark);
+}
+
+@keyframes subtitle {
+  from {
+    color: var(--light);
+    opacity: 0;
+  }
+}
+
+.cursor {
+  animation: cursor 1s 2s infinite steps(1);
+}
+
+@keyframes cursor {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+canvas {
+  position: absolute;
+  width: 100% !important;
+  height: 100% !important;
+  inset: 0;
+  animation: canvas 3s 1s both;
+}
+
+@keyframes canvas {
+  from {
+    opacity: 0;
+  }
+}
