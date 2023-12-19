@@ -22,14 +22,12 @@ h1 {
 
 .char {
   text-transform: uppercase;
-  animation: title1 0.5s var(--delay) both cubic-bezier(1, 0, 0, 1),
-    title2 5s var(--delay) infinite;
+  animation: title1 0.5s var(--delay) both, title2 5s var(--delay) infinite;
 }
 
 @keyframes title1 {
   from {
-    width: 0;
-    opacity: 0;
+    display: none;
   }
 }
 
