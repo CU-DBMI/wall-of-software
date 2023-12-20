@@ -67,12 +67,8 @@
       <canvas></canvas>
 
       <h1>
-        <template x-data x-for="(char, index) in 'Wall of Software'.split('')">
-          <span
-            x-text="char"
-            :style="{ '--delay': index * 75 + 'ms' }"
-            class="char"
-          ></span> </template
+        <template x-data x-for="char in $store.store.title">
+          <span x-text="char" class="char"></span></template
         ><span class="cursor">_</span>
       </h1>
 

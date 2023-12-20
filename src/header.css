@@ -12,17 +12,10 @@ h1 {
 
 .char {
   text-transform: uppercase;
-  animation: char-appear 0.5s var(--delay) both,
-    char-pulse 5s var(--delay) infinite;
+  animation: char 5s infinite;
 }
 
-@keyframes char-appear {
-  from {
-    display: none;
-  }
-}
-
-@keyframes char-pulse {
+@keyframes char {
   0%,
   10% {
     color: var(--dark);

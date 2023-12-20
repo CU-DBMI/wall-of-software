@@ -3,6 +3,7 @@
 document.addEventListener("alpine:init", async () => {
   // init store
   Alpine.store("store", {
+    title: "",
     list: [],
     count: 0,
     cols: 1,
@@ -11,6 +12,16 @@ document.addEventListener("alpine:init", async () => {
     },
   });
   const store = Alpine.store("store");
+
+  // type in title
+  const title = "Wall of Software";
+  let titleCount = 0;
+  const typeIn = () => {
+    titleCount++;
+    store.set("title", title.slice(0, titleCount).split(""));
+    if (titleCount < title.length) window.setTimeout(typeIn, 50);
+  };
+  typeIn();
 
   // load list
   const list = await (await fetch("list.json")).json();
