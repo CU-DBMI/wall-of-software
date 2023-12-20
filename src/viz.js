@@ -75,6 +75,7 @@ window.addEventListener("resize", reset);
 
 // get color palette
 const style = window.getComputedStyle(document.documentElement);
+const dark = new Color(style.getPropertyValue("--dark"));
 const mid = new Color(style.getPropertyValue("--mid"));
 const light = new Color(style.getPropertyValue("--light"));
 
@@ -240,13 +241,13 @@ const frame = () => {
         // accelerate
         particle.acceleration = particleAcceleration(
           position.clone().normalize()
-        );
+        ).multiplyScalar(0.05);
 
         // increment velocity
         particle.velocity.add(particle.acceleration);
 
         // increment position
-        position.add(particle.velocity.multiplyScalar(delta));
+        position.add(particle.velocity.clone().multiplyScalar(delta));
 
         // interpolate color
         const [r, g, b] = light
@@ -258,6 +259,7 @@ const frame = () => {
         if (particle.life > 1) {
           position = getStrandPoint();
           particle.life = 0;
+          particle.velocity = new Vector3();
         }
 
         // set position
@@ -280,8 +282,7 @@ const frame = () => {
 
 frame();
 
-// on mouse move
-const mouse = (event) => {
+const mouseMove = (event) => {
   // get x/y from -1 to 1
   const x = event ? -1 + 2 * (event.clientX / window.innerWidth) : 0;
   const y = event ? -1 + 2 * (event.clientY / window.innerHeight) : 0;
@@ -293,5 +294,5 @@ const mouse = (event) => {
       child.rotation.x = tau / 4 + (tau / 4) * (y / 4);
     }
 };
-mouse();
-window.addEventListener("mousemove", mouse);
+mouseMove();
+window.addEventListener("mousemove", mouseMove);

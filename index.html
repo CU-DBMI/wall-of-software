@@ -67,20 +67,13 @@
       <canvas></canvas>
 
       <h1>
-        <template x-data x-for="(word, wordIndex) in $store.store.title">
-          <span class="word">
-            <template x-for="{char, index} in word">
-              <span
-                x-text="char"
-                class="char"
-                :style="{ '--delay': index * 75 + 'ms' }"
-              />
-            </template>
-            <template x-if="wordIndex === 2">
-              <span class="cursor">_</span>
-            </template>
-          </span>
-        </template>
+        <template x-data x-for="(char, index) in 'Wall of Software'.split('')">
+          <span
+            x-text="char"
+            :style="{ '--delay': index * 75 + 'ms' }"
+            class="char"
+          ></span> </template
+        ><span class="cursor">_</span>
       </h1>
 
       <h2>
@@ -138,15 +131,28 @@
 
         <!-- ---------- SUMMARY ---------- -->
 
-        <p>
-          <b x-data x-text="$store.store.list.length">&ndash;</b> (and counting)
-          <i>tools, packages, workflows, resources, and other software</i>
-          developed at or in collaboration with the
-          <a href="https://medschool.cuanschutz.edu/dbmi" target="_blank"
-            >Department of Biomedical Informatics (DBMI) at the University of
-            Colorado</a
-          >.
-        </p>
+        <div>
+          <p>
+            <b
+              x-data
+              x-text="String($store.store.count).padStart(2, '0')"
+              style="font-size: 1.2rem; margin-right: 5px"
+              >&mdash;</b
+            >
+            <i>tools, packages, workflows, resources, and other software</i>
+          </p>
+
+          <p>
+            Developed at or in collaboration with the
+            <a href="https://medschool.cuanschutz.edu/dbmi" target="_blank"
+              >Department of Biomedical Informatics</a
+            >
+            (DBMI) at the
+            <a href="https://medschool.cuanschutz.edu/" target="_blank"
+              >University of Colorado</a
+            >
+          </p>
+        </div>
 
         <!-- ---------- LIST ---------- -->
 

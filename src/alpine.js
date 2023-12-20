@@ -3,22 +3,14 @@
 document.addEventListener("alpine:init", async () => {
   // init store
   Alpine.store("store", {
-    title: [],
     list: [],
+    count: 0,
     cols: 1,
     set(key, value) {
       this[key] = value;
     },
   });
-
-  // page title, split by word and char
-  let index = 0;
-  const title = "Wall of Software"
-    .split(" ")
-    .map((word) => word.split("").map((char) => ({ char, index: index++ })));
-
-  // set title
-  Alpine.store("store").set("title", title);
+  const store = Alpine.store("store");
 
   // load list
   const list = await (await fetch("list.json")).json();
@@ -28,15 +20,20 @@ document.addEventListener("alpine:init", async () => {
     [list[i], list[j]] = [list[j], list[i]];
   }
 
+  // count up
+  const countUp = () => {
+    const count = store.count;
+    store.set("count", count + 1);
+    if (count < list.length - 1) window.setTimeout(countUp, 50);
+  };
+  window.setTimeout(countUp, 1000);
+
   // set list
-  Alpine.store("store").set("list", list);
+  store.set("list", list);
 
   // set number of cols on window resize
   function updateCols() {
-    Alpine.store("store").set(
-      "cols",
-      Math.min(10, Math.floor(window.innerWidth / 200))
-    );
+    store.set("cols", Math.min(10, Math.floor(window.innerWidth / 200)));
   }
   updateCols();
   window.addEventListener("resize", updateCols);

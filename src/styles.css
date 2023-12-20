@@ -71,9 +71,10 @@ a {
 }
 
 p {
-  max-width: 820px;
+  max-width: 600px;
   line-height: 2;
-  text-align: justify;
+  text-align: center;
+  text-wrap: balance;
 }
 
 p a {
