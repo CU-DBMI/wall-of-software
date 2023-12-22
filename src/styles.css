@@ -1,11 +1,11 @@
 :root {
-  --black: #000000;
   --dark: #0f3d5c;
   --mid: #1ea1a3;
   --light: #ccf2e2;
-  --white: #fffef8;
+  --pale: #fffaeb;
+  --white: #fffef5;
 
-  --fast: 0.2s ease-in-out;
+  --fast: 0.15s ease-in-out;
 }
 
 *:where(:not(html, iframe, svg, img):not(svg *)) {
@@ -26,7 +26,6 @@
 html {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  color: var(--black);
   font-size: 14pt;
   font-family: "IBM Plex Sans", sans-serif;
 }
@@ -43,10 +42,6 @@ main {
   flex-direction: column;
 }
 
-main > section:last-child {
-  flex-grow: 1;
-}
-
 section {
   display: flex;
   flex-direction: column;
@@ -54,6 +49,10 @@ section {
   padding: 60px max(40px, (100% - 1200px) / 2);
   gap: 60px;
   background: var(--white);
+}
+
+section:nth-child(odd) {
+  background: var(--pale);
 }
 
 b,
