@@ -11,6 +11,7 @@
 *:where(:not(html, iframe, svg, img):not(svg *)) {
   all: unset;
   display: revert;
+  overflow: revert;
 }
 
 * {

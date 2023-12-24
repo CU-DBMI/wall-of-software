@@ -46,8 +46,7 @@ const particleChars = {
   "G": 1,
   "T": 1,
 };
-const particleAcceleration = (position) =>
-  new Vector3(position.x * 2, 0, position.z * 2);
+const particleVelocity = (position) => new Vector3(position.x, 1, position.z);
 const particleDecay = 1;
 
 // 360 degrees
@@ -81,8 +80,8 @@ const clock = new Clock();
 const reset = () => {
   camera.aspect = canvas.clientWidth / canvas.clientHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
 };
 reset();
 window.addEventListener("resize", reset);
@@ -234,6 +233,7 @@ for (const [char, count] of Object.entries(particleChars)) {
   particles.add(particle);
 }
 scene.add(particles);
+
 // render frame
 const frame = () => {
   // time since last tick
@@ -244,7 +244,7 @@ const frame = () => {
     for (const child of group.children) {
       if (group.name === "helix") {
         // spin
-        child.rotation.z += delta;
+        child.rotation.z -= delta;
       }
 
       if (group.name === "particles") {
@@ -270,14 +270,6 @@ const frame = () => {
           // increment life
           particle.life += delta / particleDecay;
 
-          // accelerate
-          particle.acceleration = particleAcceleration(
-            position.clone().normalize()
-          ).multiplyScalar(0.05);
-
-          // increment velocity
-          particle.velocity.add(particle.acceleration);
-
           // increment position
           position.add(particle.velocity.clone().multiplyScalar(delta * boost));
 
@@ -293,7 +285,7 @@ const frame = () => {
             position = point.position;
             particle.startColor = point.color;
             particle.life = 0;
-            particle.velocity = new Vector3();
+            particle.velocity = particleVelocity(position);
           }
 
           // set position
@@ -310,9 +302,8 @@ const frame = () => {
   // update scene
   composer.render();
 
-  // decay bloom
+  // decay radioactive effect
   if (bloomPass.strength > 0) bloomPass.strength -= delta * 0.05;
-  // decay particle movement
   if (boost > 1) boost -= delta * 5;
 
   // run frame again
@@ -322,25 +313,36 @@ const frame = () => {
 // particle movement boost
 let boost = 1;
 
+// mouse positions, from -1 to 1
+let mouse = new Vector2(0, 0);
+let prevMouse = new Vector2(0, 0);
+
 // on mouse move
 const mouseMove = (event) => {
-  // mouse position, from -1 to 1
-  const x = -1 + 2 * (event?.clientX ? event.clientX / window.innerWidth : 0.5);
-  const y =
-    -1 + 2 * (event?.clientY ? event.clientY / window.innerHeight : 0.5);
+  if (event?.clientX) {
+    mouse.x = -1 + 2 * (event.clientX / window.innerWidth);
+    mouse.y = -1 + 2 * (event.clientY / window.innerHeight);
+  } else {
+    mouse.x = 0;
+    mouse.y = 0;
+  }
+
+  // mouse speed
+  const delta = mouse.clone().sub(prevMouse).length();
 
   // position camera
   camera.position
-    .set(0, -tau / 32 + y / 3, -1)
+    .set(0, -tau / 32 + mouse.y / 3, -1)
     .normalize()
     .multiplyScalar(15);
   camera.lookAt(0, 0, 0);
-  camera.rotateOnAxis(new Vector3(0, 0, 1), x * (tau / 16));
+  camera.rotateOnAxis(new Vector3(0, 0, 1), mouse.x * (tau / 16));
 
-  // intensify bloom
-  if (bloomPass.strength < 0.05) bloomPass.strength += 0.0005;
-  // intensify particle movement
-  if (boost < 5) boost += 0.05;
+  // intensify radioactive effect on hard mouse shake
+  if (bloomPass.strength < 0.05) bloomPass.strength += delta * 0.005;
+  if (boost < 5) boost += delta * 0.5;
+
+  prevMouse = mouse.clone();
 };
 mouseMove();
 window.addEventListener("mousemove", mouseMove);

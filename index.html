@@ -48,16 +48,20 @@
     <link rel="stylesheet" href="src/grid.css" />
 
     <script
-      src="https://unpkg.com/@alpinejs/intersect@3.x.x"
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"
       defer
       crossorigin
     ></script>
-    <script src="https://unpkg.com/alpinejs@3.x.x" defer crossorigin></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+      crossorigin
+    ></script>
     <script type="importmap" defer crossorigin>
       {
         "imports": {
-          "three": "https://unpkg.com/three@0.159.0/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@0.159.0/examples/jsm/"
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/+esm",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
         }
       }
     </script>
@@ -112,7 +116,7 @@
           </p>
 
           <p style="margin-top: 10px">
-            ...developed at or in collaboration with the
+            developed at or in collaboration with the
             <a href="https://medschool.cuanschutz.edu/dbmi" target="_blank"
               >Department of Biomedical Informatics</a
             >
