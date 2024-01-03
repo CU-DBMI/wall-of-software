@@ -17,9 +17,9 @@ document.addEventListener("alpine:init", async () => {
   const title = "Wall of Software";
   let titleCount = 0;
   const typeIn = () => {
-    titleCount++;
     store.set("title", title.slice(0, titleCount).split(""));
-    if (titleCount < title.length) window.setTimeout(typeIn, 50);
+    titleCount++;
+    if (titleCount <= title.length) window.setTimeout(typeIn, 50);
   };
   typeIn();
 
