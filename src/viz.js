@@ -76,16 +76,6 @@ scene.background = light;
 const camera = new PerspectiveCamera();
 const clock = new Clock();
 
-// resize/reset scene/camera
-const reset = () => {
-  camera.aspect = canvas.clientWidth / canvas.clientHeight;
-  camera.updateProjectionMatrix();
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
-};
-reset();
-window.addEventListener("resize", reset);
-
 // post-processing
 const renderPass = new RenderPass(scene, camera);
 const bloomPass = new UnrealBloomPass(
@@ -99,6 +89,18 @@ const composer = new EffectComposer(renderer);
 composer.addPass(renderPass);
 composer.addPass(bloomPass);
 composer.addPass(outputPass);
+
+// resize/reset scene/camera
+const reset = async () => {
+  camera.aspect = canvas.clientWidth / canvas.clientHeight;
+  camera.updateProjectionMatrix();
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+  composer.setPixelRatio(window.devicePixelRatio);
+  composer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+};
+reset();
+window.addEventListener("resize", reset);
 
 // generate helix
 const leftPoints = [];
