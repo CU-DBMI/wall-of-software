@@ -1,10 +1,5 @@
 [
   {
-    "name": "Manubot",
-    "description": "Manuscripts, open and automated",
-    "link": "https://manubot.org"
-  },
-  {
     "name": "Pycytominer",
     "description": "Package for processing image-based profiling data",
     "link": "https://pycytominer.readthedocs.io/"
@@ -18,6 +13,11 @@
     "name": "CytoTable",
     "description": "Scalable single-cell data transformations",
     "link": "https://cytomining.github.io/CytoTable/"
+  },
+  {
+    "name": "Manubot",
+    "description": "Manuscripts, open and automated",
+    "link": "https://manubot.org"
   },
   {
     "name": "Lorem Ipsum",
