@@ -31,7 +31,6 @@
   aspect-ratio: 1 / var(--ratio);
   width: 100%;
   gap: 5px;
-  background: var(--mid);
   color: var(--white);
   text-align: center;
   overflow-wrap: anywhere;
@@ -41,10 +40,10 @@
   transition: opacity var(--fast);
 }
 
-@keyframes link {
-  from {
-    opacity: 0;
-  }
+.link:hover,
+.link:focus,
+.link:not(:has(.image)) {
+  background: var(--mid);
 }
 
 .grid:has(.link:hover, .link:focus) .link {
@@ -54,6 +53,12 @@
 .link:hover,
 .link:focus {
   opacity: 1 !important;
+}
+
+@keyframes link {
+  from {
+    opacity: 0;
+  }
 }
 
 .link > * {
@@ -77,9 +82,7 @@
 
 .initials,
 .image {
-  transition:
-    opacity var(--fast),
-    transform var(--fast);
+  transition: opacity var(--fast), transform var(--fast);
 }
 
 .link:hover .initials,
@@ -97,9 +100,7 @@
   font-weight: 600;
   font-size: 1.1rem;
   opacity: 0;
-  transition:
-    opacity var(--fast),
-    transform var(--fast);
+  transition: opacity var(--fast), transform var(--fast);
 }
 
 .link:hover .name,
@@ -120,9 +121,7 @@
   text-align: center;
   opacity: 0;
   pointer-events: none;
-  transition:
-    opacity var(--fast),
-    transform var(--fast);
+  transition: opacity var(--fast), transform var(--fast);
   transition-delay: 0;
 }
 
@@ -144,9 +143,7 @@
   color: var(--white);
   clip-path: polygon(0% 0%, 105% 0%, 0% 105%);
   pointer-events: none;
-  transition:
-    opacity var(--fast),
-    transform var(--fast);
+  transition: opacity var(--fast), transform var(--fast);
 }
 
 .outline {
