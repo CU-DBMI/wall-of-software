@@ -18,7 +18,6 @@ To start, [open a pull request in this repo](https://github.com/CU-DBMI/wall-of-
   - Filename **must** be lowercase, kebab-case version of entry name, e.g. _Word Lapse_ → `word-lapse`.
   - **Must** have extension `.jpg`.
   - Roughly square.
-  - Enough margins for main content to fit nicely inside hexagon.
   - Larger than ~400px × 400px , smaller than ~1000px × 1000px
   - Better than ~80% jpeg compression level, smaller than ~50 kB.
 
@@ -33,9 +32,15 @@ If you'd also like your image to be printed out and posted on the wall of the DB
 - Add a _printable_ image to `/images`.
   - Filename should be lowercase, kebab-case version of entry name.
   - Should have extension `.png`.
-  - Enough margins for main content to fit nicely inside hexagon.
   - Conforms to the [4" × 4" hexagon template here](https://www.stickermule.com/uses/hexagon-stickers).
 
-### Help
+## Image Guidelines
 
-If you need help submitting software, you may [contact the Software Engineering Team](https://cu-dbmi.github.io/set-website/about/) for help.
+- Look at [hexb.in](http://hexb.in/) for inspiration!
+- Can contain text or not (sometimes more intriguing).
+- Enough margins for main content to fit nicely inside hexagon.
+- Solid background colors look best.
+
+## Help
+
+If you need help, you may [contact the Software Engineering Team](https://cu-dbmi.github.io/set-website/about/).

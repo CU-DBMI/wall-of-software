@@ -146,70 +146,70 @@
               }"
               class="cell"
             >
+              <!-- LINK -->
+
               <a
-                class="hex"
+                class="link"
                 tabindex="0"
                 :href="entry.link"
                 target="_blank"
-                :data-tooltip="
+                :aria-label="`${entry.name} - ${entry.description}`"
+              >
+                <!-- INITIALS -->
+
+                <div
+                  x-text="entry.name.toUpperCase().split(/[^A-Z0-9]+/g).map(word => word.charAt(0)).join('')"
+                  class="initials"
+                  aria-hidden="true"
+                ></div>
+
+                <!-- IMAGE -->
+
+                <img
+                  class="image"
+                  :src="`images/${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.jpg`"
+                  loading="lazy"
+                  onerror="this.remove();"
+                  aria-hidden="true"
+                />
+
+                <!-- NAME -->
+
+                <div x-text="entry.name" class="name" aria-hidden="true"></div>
+              </a>
+
+              <!-- TOOLTIP -->
+
+              <div
+                x-text="
                   entry.description.length > 60
                     ? entry.description.slice(0, 60 - 3) + '...'
                     : entry.description
                 "
+                class="tooltip"
+                aria-hidden="true"
+              ></div>
+
+              <!-- OUTLINE -->
+
+              <svg
+                viewBox="-0.866 -1 1.732 2"
+                class="outline"
+                aria-hidden="true"
               >
-                <!-- HEXAGON FILL SHAPE -->
-
-                <svg viewBox="-0.866 -1 1.732 2" class="shape">
-                  <path
-                    class="stroke"
-                    pathLength="1"
-                    d="
-                      M 0.866	-0.500
-                      L 0.000	-1.000
-                      L -0.866	-0.500
-                      L -0.866	0.500
-                      L 0.000	1.000
-                      L 0.866	0.500
-                      z
-                    "
-                  />
-                  <path
-                    class="fill"
-                    d="
-                      M 0.866	-0.500
-                      L 0.000	-1.000
-                      L -0.866	-0.500
-                      L -0.866	0.500
-                      L 0.000	1.000
-                      L 0.866	0.500
-                      z
-                    "
-                  />
-                </svg>
-
-                <!-- BACKGROUND IMAGE -->
-
-                <div class="image">
-                  <svg viewBox="-30 -22 60 40" class="img">
-                    <text
-                      x-html="entry.name.toUpperCase().split(/[^A-Z0-9]+/g).map(word => word.charAt(0)).join('')"
-                    ></text>
-                  </svg>
-                  <img
-                    class="img"
-                    :src="`images/${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.jpg`"
-                    loading="lazy"
-                    onerror="this.remove();"
-                    alt=""
-                  />
-                </div>
-
-                <!-- TEXT CONTENT -->
-
-                <template x-if="entry.name">
-                  <div x-text="entry.name" class="text"></div>
-                </template>
-              </a>
+                <path
+                  pathLength="1"
+                  d="
+                    M 0.866	-0.500
+                    L 0.000	-1.000
+                    L -0.866	-0.500
+                    L -0.866	0.500
+                    L 0.000	1.000
+                    L 0.866	0.500
+                    z
+                  "
+                />
+              </svg>
             </div>
           </template>
         </div>
