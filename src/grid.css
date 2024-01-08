@@ -1,4 +1,5 @@
 .grid {
+  /* 2 / √3 */
   --ratio: 1.1547;
   --gap: 10px;
   display: grid;
@@ -6,7 +7,7 @@
   place-content: center;
   width: 100%;
   padding: 40px 60px;
-  gap: calc(var(--gap) * var(--ratio)) var(--gap);
+  gap: calc(var(--gap) / var(--ratio)) var(--gap);
 }
 
 .cell {
@@ -16,7 +17,7 @@
   justify-content: center;
   aspect-ratio: var(--ratio) / 1;
   transform: translateX(
-    calc(var(--offset) * 25% + (var(--offset) * var(--gap) * var(--ratio)) / 4)
+    calc(var(--offset) * 25% + (var(--offset) * var(--gap)) / 4)
   );
 }
 
@@ -53,6 +54,10 @@
 .link:hover,
 .link:focus {
   opacity: 1 !important;
+}
+
+.cell:has(.link:hover, .link:focus) {
+  z-index: 1;
 }
 
 @keyframes link {
