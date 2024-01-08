@@ -25,6 +25,11 @@ import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 
+// camera props
+const fov = 30;
+const cameraDist = 30;
+const cameraOffset = -5;
+
 // helix props
 const strandSize = 0.3;
 const pairSize = 0.1;
@@ -35,10 +40,10 @@ const helixRadius = 1.75;
 const helixTwist = 1 / 15;
 
 // particle props
-const particleSize = 1;
+const particleSize = 2;
 const particleChars = {
   "⬢": 50,
-  "•": 150,
+  "•": 50,
   "0": 1,
   "1": 1,
   "A": 1,
@@ -46,7 +51,7 @@ const particleChars = {
   "G": 1,
   "T": 1,
 };
-const particleVelocity = (position) => new Vector3(position.x, 1, position.z);
+const particleVelocity = (position) => new Vector3(position.x, 0.5, position.z);
 const particleDecay = 1;
 
 // 360 degrees
@@ -74,6 +79,7 @@ renderer.autoClear = false;
 const scene = new Scene();
 scene.background = light;
 const camera = new PerspectiveCamera();
+camera.fov = fov;
 const clock = new Clock();
 
 // post-processing
@@ -321,7 +327,7 @@ let prevMouse = new Vector2(0, 0);
 
 // on mouse move
 const mouseMove = (event) => {
-  if (event?.clientX) {
+  if (event?.clientX !== undefined) {
     mouse.x = -1 + 2 * (event.clientX / window.innerWidth);
     mouse.y = -1 + 2 * (event.clientY / window.innerHeight);
   } else {
@@ -336,9 +342,10 @@ const mouseMove = (event) => {
   camera.position
     .set(0, -tau / 32 + mouse.y / 3, -1)
     .normalize()
-    .multiplyScalar(15);
+    .multiplyScalar(cameraDist);
   camera.lookAt(0, 0, 0);
   camera.rotateOnAxis(new Vector3(0, 0, 1), mouse.x * (tau / 16));
+  camera.translateX(cameraOffset);
 
   // intensify radioactive effect on hard mouse shake
   if (bloomPass.strength < 0.05) bloomPass.strength += delta * 0.005;
