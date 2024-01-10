@@ -56,12 +56,12 @@ const particleDecay = 1;
 
 // 360 degrees
 const tau = 2 * Math.PI;
-
 // rand between range
 const rand = (min = 0, max = 1) => min + Math.random() * (max - min);
-
 // round to multiple
 const round = (value, multiple) => multiple * Math.floor(value / multiple);
+// clamp between values
+const clamp = (value, min = 0, max = 1) => Math.max(min, Math.min(value, max));
 
 // get color palette
 const style = window.getComputedStyle(document.documentElement);
@@ -130,9 +130,9 @@ for (let z = helixMinZ; z <= helixMaxZ; z += helixStep) {
 
   // connect strands with a pair at z integer intervals
   if (Math.abs(z - Math.round(z)) < 0.001) {
-    pairPoints.push(x, y, z, -x, -y, z);
+    pairPoints.push(x, y, z, x, y, z, -x, -y, z, -x, -y, z);
     const { r, g, b } = color;
-    pairColors.push(r, g, b, r, g, b);
+    pairColors.push(r, g, b, r, g, b, r, g, b, r, g, b);
   }
 }
 
@@ -152,31 +152,17 @@ const pairMaterial = new LineMaterial({
 
 // left strand object
 const leftStrandGeometry = new LineGeometry();
+const leftStrand = new Line2(leftStrandGeometry, strandMaterial);
 leftStrandGeometry.setPositions(leftPoints);
 leftStrandGeometry.setColors(helixColors);
-const leftStrand = new Line2(leftStrandGeometry, strandMaterial);
 leftStrand.rotation.x = tau / 4;
 
 // right strand object
 const rightStrandGeometry = new LineGeometry();
+const rightStrand = new Line2(rightStrandGeometry, strandMaterial);
 rightStrandGeometry.setPositions(rightPoints);
 rightStrandGeometry.setColors(helixColors);
-const rightStrand = new Line2(rightStrandGeometry, strandMaterial);
 rightStrand.rotation.x = tau / 4;
-
-// get random point on strands
-const getStrandPoint = () => {
-  const left = Math.random() > 0.5;
-  const strand = left ? leftStrand : rightStrand;
-  const points = left ? leftPoints : rightPoints;
-  const index = round(Math.random() * points.length, 3);
-  return {
-    position: strand.localToWorld(
-      new Vector3(...points.slice(index, index + 3))
-    ),
-    color: new Color(...helixColors.slice(index, index + 3)),
-  };
-};
 
 // pairs object
 const pairGeometry = new LineSegmentsGeometry();
@@ -193,6 +179,42 @@ helix.add(pairs);
 helix.add(rightStrand);
 helix.add(leftStrand);
 scene.add(helix);
+
+// draw in helix
+let drawPercent = -0.5;
+const drawHelix = () => {
+  drawPercent += 0.005;
+  leftStrand.geometry.instanceCount =
+    clamp(drawPercent) * (leftPoints.length / 3);
+  rightStrand.geometry.instanceCount =
+    clamp(drawPercent) * (rightPoints.length / 3);
+  const pairCount = pairs.geometry.attributes.instanceStart.count;
+  const pairStarts = pairs.geometry.attributes.instanceStart;
+  pairs.geometry.instanceCount = clamp(drawPercent * pairCount, 0, pairCount);
+  for (let index = 0; index < pairCount; index++) {
+    const scale = 1 - clamp((drawPercent - 0.1 - index / pairCount) * 10);
+    const x = pairStarts.getX(index) * scale;
+    const y = pairStarts.getY(index) * scale;
+    pairs.geometry.attributes.instanceEnd.setXY(index, x, y);
+  }
+  pairs.geometry.attributes.instanceEnd.needsUpdate = true;
+  if (drawPercent < 2) window.setTimeout(drawHelix, 10);
+};
+drawHelix();
+
+// get random point on strands
+const getStrandPoint = () => {
+  const left = Math.random() > 0.5;
+  const strand = left ? leftStrand : rightStrand;
+  const points = left ? leftPoints : rightPoints;
+  const index = round(Math.random() * points.length * clamp(drawPercent), 3);
+  return {
+    position: strand.localToWorld(
+      new Vector3(...points.slice(index, index + 3))
+    ),
+    color: new Color(...helixColors.slice(index, index + 3)),
+  };
+};
 
 // particles
 const particles = new Group();
@@ -252,7 +274,7 @@ const frame = () => {
     for (const child of group.children) {
       if (group.name === "helix") {
         // spin
-        child.rotation.z -= delta;
+        child.rotation.z -= delta * (1 + radioactive * 2);
       }
 
       if (group.name === "particles") {
@@ -279,7 +301,11 @@ const frame = () => {
           particle.life += delta / particleDecay;
 
           // increment position
-          position.add(particle.velocity.clone().multiplyScalar(delta * boost));
+          position.add(
+            particle.velocity
+              .clone()
+              .multiplyScalar(delta * (1 + radioactive * 10))
+          );
 
           // interpolate color
           const [r, g, b] = particle.startColor
@@ -307,19 +333,22 @@ const frame = () => {
       }
     }
 
+  // update effects
+  bloomPass.strength = radioactive * 0.1;
+
   // update scene
   composer.render();
 
   // decay radioactive effect
-  if (bloomPass.strength > 0) bloomPass.strength -= delta * 0.05;
-  if (boost > 1) boost -= delta * 5;
+  if (radioactive > 0) radioactive -= delta * 0.5;
+  if (radioactive < 0) radioactive = 0;
 
   // run frame again
   window.setTimeout(() => window.requestAnimationFrame(frame), 10);
 };
 
-// particle movement boost
-let boost = 1;
+// radioactive effect
+let radioactive = 0;
 
 // mouse positions, from -1 to 1
 let mouse = new Vector2(0, 0);
@@ -347,9 +376,9 @@ const mouseMove = (event) => {
   camera.rotateOnAxis(new Vector3(0, 0, 1), mouse.x * (tau / 16));
   camera.translateX(cameraOffset);
 
-  // intensify radioactive effect on hard mouse shake
-  if (bloomPass.strength < 0.05) bloomPass.strength += delta * 0.005;
-  if (boost < 5) boost += delta * 0.5;
+  // intensify radioactive effect
+  if (radioactive < 1) radioactive += delta * 0.05;
+  if (radioactive > 1) radioactive = 1;
 
   prevMouse = mouse.clone();
 };

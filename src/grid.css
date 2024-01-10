@@ -115,7 +115,6 @@
 }
 
 .tooltip {
-  display: none;
   position: absolute;
   bottom: calc(100% * var(--ratio) + var(--gap));
   width: 150%;
@@ -128,11 +127,10 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--fast), transform var(--fast);
-  transition-delay: 0;
+  transition-delay: 0ms;
 }
 
 .cell:has(.link:hover, .link:focus) .tooltip {
-  display: block;
   transform: translateY(calc(-1 * var(--gap)));
   opacity: 1;
   transition-delay: 200ms;
@@ -155,11 +153,10 @@
 
 .outline {
   fill: none;
-  stroke: var(--dark);
   stroke-width: 0.03;
-  stroke-dasharray: 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01 0.01
-    0.01 0.01 0.01 0.01 0.01 1.5;
-  stroke-dashoffset: 1.84;
+  stroke-dasharray: 0.01;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   aspect-ratio: 1 / var(--ratio);
   width: calc(100% + var(--gap));
   overflow: visible;
@@ -167,12 +164,46 @@
 }
 
 .cell:has(.link:hover, .link:focus) .outline {
-  animation: outline 1.25s linear;
+  animation: outline 1s ease-in-out;
+  --point1: 50% -100%;
+  --point2: -79.904% -25%;
+  --point3: -79.904% 125%;
+  --point4: 50% 200%;
+  --point5: 179.904% 125%;
+  --point6: 179.904% -25%;
 }
 
 @keyframes outline {
-  to {
-    stroke-dashoffset: 0.17;
+  0%,
+  100% {
+    clip-path: polygon(50% 50%, var(--point6), var(--point2));
+  }
+  16.6% {
+    clip-path: polygon(50% 50%, var(--point1), var(--point3));
+  }
+  33.3% {
+    clip-path: polygon(50% 50%, var(--point2), var(--point4));
+  }
+  50% {
+    clip-path: polygon(50% 50%, var(--point3), var(--point5));
+  }
+  66.6% {
+    clip-path: polygon(50% 50%, var(--point4), var(--point6));
+  }
+  83.3% {
+    clip-path: polygon(50% 50%, var(--point5), var(--point1));
+  }
+  0%,
+  100% {
+    stroke: transparent;
+  }
+  10% {
+    stroke: var(--dark);
+  }
+  50% {
     stroke: var(--mid);
+  }
+  90% {
+    stroke: var(--light);
   }
 }

@@ -1,7 +1,8 @@
 :root {
   --dark: #0f3d5c;
-  --mid: #1ea1a3;
-  --light: #ccf2e2;
+  --mid: #1ea2a4;
+  --light-mid: #60dcc3;
+  --light: #caf1e1;
   --pale: #fffaeb;
   --white: #fffef5;
 
@@ -35,6 +36,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 main {
