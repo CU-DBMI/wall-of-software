@@ -3,7 +3,7 @@
 ### [✨ **VIEW THE WALL**](https://CU-DBMI.github.io/wall-of-software)
 
 The [Department of Biomedical Informatics (DBMI) at the University of Colorado](https://medschool.cuanschutz.edu/dbmi) investigates complex problems in medicine and biology using integrated computational technology.
-This repository and website contains a non-comprehensive list of tools, packages, workflows, resources, and other software that have been developed by our diverse group researchers, scientists, developers, and collaborators in support of [our mission](https://medschool.cuanschutz.edu/dbmi/about-us).
+This repository and website contain a non-comprehensive list of tools, packages, workflows, resources, and other software that have been developed by our diverse group of researchers, scientists, developers, and collaborators in support of [our mission](https://medschool.cuanschutz.edu/dbmi/about-us).
 
 ## Submit
 
