@@ -47,15 +47,6 @@
   background: var(--dark);
 }
 
-.grid:has(.link:hover, .link:focus) .link {
-  opacity: 0.75;
-}
-
-.link:hover,
-.link:focus {
-  opacity: 1 !important;
-}
-
 .cell:has(.link:hover, .link:focus) {
   z-index: 1;
 }
@@ -154,7 +145,7 @@
 
 .outline {
   fill: none;
-  stroke-width: 0.02;
+  stroke-width: 0.025;
   stroke-dasharray: 0.005 0.007;
   stroke-linecap: round;
   stroke-linejoin: round;

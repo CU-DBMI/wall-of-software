@@ -40,8 +40,8 @@ If you'd also like your software or group to be printed out and posted on the wa
 - Look at existing entries and [hexb.in](http://hexb.in/) for inspiration!
 - Enough margins for main content to fit nicely inside hexagon.
 - _Web-friendly_ version ideally doesn't contain text.
-  More intriguing!
-  Website can add text from name as needed.
+  Why?
+  More visually appealing, more consistent, more intriguing, and website already displays name text as needed.
 
 ## Help
 
