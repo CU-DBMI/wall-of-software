@@ -155,7 +155,7 @@
 .outline {
   fill: none;
   stroke-width: 0.02;
-  stroke-dasharray: 0.01;
+  stroke-dasharray: 0.005 0.007;
   stroke-linecap: round;
   stroke-linejoin: round;
   aspect-ratio: 1 / var(--ratio);
