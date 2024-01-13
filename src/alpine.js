@@ -38,7 +38,7 @@ document.addEventListener("alpine:init", async () => {
 
   // set number of cols on window resize
   const updateCols = () =>
-    store.set("cols", Math.min(10, Math.floor(window.innerWidth / 200)));
+    store.set("cols", Math.min(6, Math.floor(window.innerWidth / 220)));
   updateCols();
   window.addEventListener("resize", updateCols);
 });
