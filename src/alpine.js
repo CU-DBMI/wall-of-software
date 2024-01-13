@@ -5,6 +5,7 @@ document.addEventListener("alpine:init", async () => {
   Alpine.store("store", {
     title: [],
     list: [],
+    groups: [],
     count: 0,
     cols: 1,
     set(key, value) {
@@ -31,22 +32,33 @@ document.addEventListener("alpine:init", async () => {
       window.setTimeout(countUp, 50);
   };
 
-  // load list
-  const list = (await (await fetch("list.json")).json()).map(
-    (entry, index) => ({ ...entry, order: index })
-  );
-  // shuffle
+  // load data lists
+  store.set("list", await loadList("list.json"));
+  store.set("groups", await loadList("groups.json"));
+
+  // set number of cols on window resize
+  const updateCols = () =>
+    store.set("cols", Math.min(6, Math.floor(window.innerWidth / 220)));
+  updateCols();
+  window.addEventListener("resize", updateCols);
+});
+
+// load list data
+const loadList = async (url) => {
+  try {
+    let list = await (await fetch(url)).json();
+    list = list.map((entry, index) => ({ ...entry, order: index }));
+    shuffle(list);
+    return list;
+  } catch (error) {
+    return [];
+  }
+};
+
+// shuffle list
+const shuffle = (list) => {
   for (let i = list.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [list[i], list[j]] = [list[j], list[i]];
   }
-
-  // set list
-  store.set("list", list);
-
-  // set number of cols on window resize
-  const updateCols = () =>
-    store.set("cols", Math.min(10, Math.floor(window.innerWidth / 200)));
-  updateCols();
-  window.addEventListener("resize", updateCols);
-});
+};

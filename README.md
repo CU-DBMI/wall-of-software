@@ -5,41 +5,43 @@
 The [Department of Biomedical Informatics (DBMI) at the University of Colorado](https://medschool.cuanschutz.edu/dbmi) investigates complex problems in medicine and biology using integrated computational technology.
 This repository and website contains a non-comprehensive list of tools, packages, workflows, resources, and other software that have been developed by our diverse group researchers, scientists, developers, and collaborators in support of [our mission](https://medschool.cuanschutz.edu/dbmi/about-us).
 
-## Submit Your Software
+## Submit
 
-If you work for or with the department, you are eligible to submit your software here.
-To start, [open a pull request in this repo](https://github.com/CU-DBMI/wall-of-software/pulls) with the following changes:
+If you work for or with the department, you are eligible to submit your software or group here.
+
+To submit your **software**, [open a pull request in this repo](https://github.com/CU-DBMI/wall-of-software/pulls) with the following changes:
 
 - Add an _entry_ to **the top** of `list.json`.
   - A short ~3-20 char name.
-  - A short ~20-60 char description.
+  - A short ~20-80 char description.
   - A link to a website or repo.
 - Add a _web-friendly_ image to `/images`.
-  - Filename **must** be lowercase, kebab-case version of entry name, e.g. _Word Lapse_ → `word-lapse`.
-  - **Must** have extension `.jpg`.
-  - Roughly square.
-  - Larger than ~400px × 400px , smaller than ~1000px × 1000px
-  - Better than ~80% jpeg compression level, smaller than ~50 kB.
+  - Filename is lowercase, kebab-case version of entry name, e.g. _Word Lapse_ → `word-lapse`.
+  - PNG with extension of `.png`.
+  - 600px × 600px.
+
+To submit your **group**, make the same changes, except use `groups.json` and `/groups`.
 
 Shortly after opening a PR, a link should appear to a preview of the site with your changes.
 
-Entries are shuffled randomly on each page visit to not give preferential treatment!
+Entries are shuffled randomly on each page visit!
 
-### Printed
+## Printed
 
-If you'd also like your image to be printed out and posted on the wall of the DBMI office (6th floor Anschutz Health Sciences Building), **also** include these changes:
+If you'd also like your software or group to be printed out and posted on the wall of the DBMI office (6th floor Anschutz Health Sciences Building), submit the following changes:
 
-- Add a _printable_ image to `/images`.
+- Add a _printable_ image to `/print`.
   - Filename should be lowercase, kebab-case version of entry name.
   - Should have extension `.png`.
   - Conforms to the [4" × 4" hexagon template here](https://www.stickermule.com/uses/hexagon-stickers).
 
 ## Image Guidelines
 
-- Look at [hexb.in](http://hexb.in/) for inspiration!
-- Can contain text or not (sometimes more intriguing).
+- Look at existing entries and [hexb.in](http://hexb.in/) for inspiration!
 - Enough margins for main content to fit nicely inside hexagon.
-- Solid background colors look best.
+- _Web-friendly_ version ideally doesn't contain text.
+  More intriguing!
+  Website can add text from name as needed.
 
 ## Help
 

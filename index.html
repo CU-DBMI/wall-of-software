@@ -75,13 +75,13 @@
     <header>
       <canvas></canvas>
 
-      <h1>
+      <h1 class="title">
         <template x-data x-for="char in $store.store.title">
           <span x-text="char" class="char"></span></template
         ><span class="cursor">_</span>
       </h1>
 
-      <h2>
+      <h2 class="subtitle">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="18 18 217 208"
@@ -115,7 +115,7 @@
             <i>tools, packages, workflows, resources, and other software</i>
           </p>
 
-          <p style="margin-top: 10px">
+          <p style="margin-top: 5px">
             developed at or in collaboration with the
             <a href="https://medschool.cuanschutz.edu/dbmi" target="_blank"
               >Department of Biomedical Informatics</a
@@ -130,7 +130,7 @@
 
       <!-- ---------- LIST ---------- -->
 
-      <section style="flex-grow: 1">
+      <section>
         <div
           x-data="{ inView: false }"
           x-intersect="inView = true"
@@ -142,7 +142,7 @@
               :style="{
                 '--offset': Math.floor(index / $store.store.cols) % 2 ? -1 : 1, 
                 '--play': inView ? 'running' : 'paused',
-                '--delay': entry.order * 25 + 'ms',
+                '--delay': entry.order * (500 / $store.store.list.length) + 'ms',
               }"
               class="cell"
             >
@@ -167,7 +167,7 @@
 
                 <img
                   class="image"
-                  :src="`images/${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.jpg`"
+                  :src="`images/${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`"
                   loading="lazy"
                   onerror="this.remove();"
                   aria-hidden="true"
@@ -181,9 +181,100 @@
               <!-- TOOLTIP -->
 
               <div
+                x-show="entry.description.trim()"
                 x-text="
-                  entry.description.length > 60
-                    ? entry.description.slice(0, 60 - 3) + '...'
+                  entry.description.length > 80
+                    ? entry.description.slice(0, 80 - 3) + '...'
+                    : entry.description
+                "
+                class="tooltip"
+                aria-hidden="true"
+              ></div>
+
+              <!-- OUTLINE -->
+
+              <svg
+                viewBox="-0.866 -1 1.732 2"
+                class="outline"
+                aria-hidden="true"
+              >
+                <path
+                  pathLength="1"
+                  d="
+                    M 0.866	-0.500
+                    L 0.000	-1.000
+                    L -0.866	-0.500
+                    L -0.866	0.500
+                    L 0.000	1.000
+                    L 0.866	0.500
+                    z
+                  "
+                />
+              </svg>
+            </div>
+          </template>
+        </div>
+      </section>
+
+      <!-- ---------- GROUPS ---------- -->
+
+      <section>
+        <h2>GROUPS</h2>
+
+        <div
+          x-data="{ inView: false }"
+          x-intersect="inView = true"
+          class="grid"
+          :style="{ '--cols': $store.store.cols }"
+        >
+          <template x-for="(entry, index) in $store.store.groups">
+            <div
+              :style="{
+                '--offset': Math.floor(index / $store.store.cols) % 2 ? -1 : 1, 
+                '--play': inView ? 'running' : 'paused',
+                '--delay': entry.order * (500 / $store.store.list.length) + 'ms',
+              }"
+              class="cell"
+            >
+              <!-- LINK -->
+
+              <a
+                class="link"
+                tabindex="0"
+                :href="entry.link"
+                target="_blank"
+                :aria-label="`${entry.name} - ${entry.description}`"
+              >
+                <!-- INITIALS -->
+
+                <div
+                  x-text="entry.name.toUpperCase().split(/[^A-Z0-9]+/g).map(word => word.charAt(0)).join('')"
+                  class="initials"
+                  aria-hidden="true"
+                ></div>
+
+                <!-- IMAGE -->
+
+                <img
+                  class="image"
+                  :src="`groups/${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`"
+                  loading="lazy"
+                  onerror="this.remove();"
+                  aria-hidden="true"
+                />
+
+                <!-- NAME -->
+
+                <div x-text="entry.name" class="name" aria-hidden="true"></div>
+              </a>
+
+              <!-- TOOLTIP -->
+
+              <div
+                x-show="entry.description.trim()"
+                x-text="
+                  entry.description.length > 80
+                    ? entry.description.slice(0, 80 - 3) + '...'
                     : entry.description
                 "
                 class="tooltip"

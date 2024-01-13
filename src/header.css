@@ -1,11 +1,10 @@
-h1 {
+.title {
   color: var(--dark);
-  font-size: 2.5rem;
   font-family: "IBM Plex Mono", monospace;
 }
 
 @media (max-width: 400px) {
-  h1 {
+  .title {
     font-size: 2rem;
   }
 }
@@ -25,12 +24,11 @@ h1 {
   }
 }
 
-h2 {
-  font-size: 1.2rem;
+.subtitle {
   animation: subtitle 2s 1s both;
 }
 
-h2 .icon {
+.subtitle .icon {
   position: relative;
   top: 0.15em;
   margin-right: 0.5em;
