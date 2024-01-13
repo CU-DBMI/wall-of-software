@@ -31,20 +31,20 @@
   justify-content: center;
   aspect-ratio: 1 / var(--ratio);
   width: 100%;
+  min-height: 0;
   gap: 5px;
   color: var(--white);
   text-align: center;
   overflow-wrap: anywhere;
-  text-wrap: balance;
   animation: link 1s var(--delay) both var(--play);
   clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-  transition: opacity var(--fast);
+  transition: background var(--fast);
 }
 
 .link:hover,
 .link:focus,
 .link:not(:has(.image)) {
-  background: var(--mid);
+  background: var(--dark);
 }
 
 .grid:has(.link:hover, .link:focus) .link {
@@ -99,10 +99,11 @@
 }
 
 .name {
+  position: relative;
+  top: -0.1em;
   padding: 20px 10px;
   overflow: hidden;
   transform: scale(0.9);
-  font-weight: 600;
   font-size: 1.1rem;
   opacity: 0;
   transition: opacity var(--fast), transform var(--fast);
@@ -131,7 +132,7 @@
 }
 
 .cell:has(.link:hover, .link:focus) .tooltip {
-  transform: translateY(calc(-1 * var(--gap)));
+  transform: translateY(calc(-0.5 * var(--gap)));
   opacity: 1;
   transition-delay: 200ms;
 }
@@ -153,7 +154,7 @@
 
 .outline {
   fill: none;
-  stroke-width: 0.03;
+  stroke-width: 0.02;
   stroke-dasharray: 0.01;
   stroke-linecap: round;
   stroke-linejoin: round;

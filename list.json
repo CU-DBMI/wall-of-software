@@ -1,102 +1,67 @@
 [
   {
-    "name": "Pycytominer",
+    "name": "Monarch Initiative",
+    "description": "Integrated cross-species gene, disease, and phenotype data",
+    "link": "https://monarchinitiative.org"
+  },
+  {
+    "name": "PyCytominer",
     "description": "Package for processing image-based profiling data",
-    "link": "https://pycytominer.readthedocs.io/"
+    "link": "https://pycytominer.readthedocs.io"
   },
   {
     "name": "CytoSnake",
-    "description": "Orchestrating single-cell morphology pipelines",
-    "link": "https://cytosnake.readthedocs.io/"
+    "description": "Orchestrate single-cell morphology pipelines",
+    "link": "https://cytosnake.readthedocs.io"
   },
   {
     "name": "CytoTable",
     "description": "Scalable single-cell data transformations",
-    "link": "https://cytomining.github.io/CytoTable/"
+    "link": "https://cytomining.github.io/CytoTable"
+  },
+  {
+    "name": "Human Microbiome Compendium",
+    "description": "Dataset of the human microbiome at an unprecedented scale",
+    "link": "https://microbiomap.org"
+  },
+  {
+    "name": "Simplex",
+    "description": "Identify complexity in your writing and simplify it",
+    "link": "https://gosimplex.app"
+  },
+  {
+    "name": "Lab Website Template",
+    "description": "Easy-to-use, flexible website template for labs",
+    "link": "https://greene-lab.gitbook.io/lab-website-template-docs"
+  },
+  {
+    "name": "My Geneset",
+    "description": "Collect, save, and share sets of genes",
+    "link": "https://mygeneset.info"
+  },
+  {
+    "name": "Word Lapse",
+    "description": "Explore how words change meaning over time",
+    "link": "https://greenelab.github.io/word-lapse"
+  },
+  {
+    "name": "Preprint Similarity Search",
+    "description": "Find suitable journals for a preprint based on its text",
+    "link": "https://greenelab.github.io/preprint-similarity-search"
+  },
+  {
+    "name": "Adage",
+    "description": "Explore gene expression data with machine learning",
+    "link": "https://adage.greenelab.com"
+  },
+  {
+    "name": "Hetionet",
+    "description": "29 databases of genes, compounds, diseases, and more in a single network",
+    "link": "https://het.io"
   },
   {
     "name": "Manubot",
     "description": "Manuscripts, open and automated",
     "link": "https://manubot.org"
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
-  },
-  {
-    "name": "Lorem Ipsum",
-    "description": "Lorem ipsum dolor sit amet",
-    "link": ""
   }
 ]
