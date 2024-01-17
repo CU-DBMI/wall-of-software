@@ -4,7 +4,7 @@
   --gap: 10px;
   --cols: 5;
   display: grid;
-  grid-template-columns: repeat(var(--cols), minmax(0, 200px));
+  grid-template-columns: repeat(var(--cols), minmax(0, 165px));
   place-content: center;
   width: 100%;
   padding: 40px;

@@ -40,7 +40,7 @@ document.addEventListener("alpine:init", async () => {
   const updateCols = () =>
     store.set(
       "cols",
-      Math.min(5, Math.max(1, Math.floor(window.innerWidth / 300)))
+      Math.min(5, Math.max(1, Math.floor(window.innerWidth / 250)))
     );
   updateCols();
   window.addEventListener("resize", updateCols);
