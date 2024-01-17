@@ -2,6 +2,7 @@
   /* 2 / √3 */
   --ratio: 1.1547;
   --gap: 10px;
+  --cols: 6;
   display: grid;
   grid-template-columns: repeat(var(--cols), 1fr);
   place-content: center;

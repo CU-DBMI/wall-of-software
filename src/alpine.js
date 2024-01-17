@@ -7,7 +7,7 @@ document.addEventListener("alpine:init", async () => {
     list: [],
     groups: [],
     count: 0,
-    cols: 1,
+    cols: 6,
     set(key, value) {
       this[key] = value;
     },
