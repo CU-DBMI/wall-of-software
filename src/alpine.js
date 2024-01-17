@@ -7,7 +7,7 @@ document.addEventListener("alpine:init", async () => {
     list: [],
     groups: [],
     count: 0,
-    cols: 6,
+    cols: 5,
     set(key, value) {
       this[key] = value;
     },
@@ -38,7 +38,10 @@ document.addEventListener("alpine:init", async () => {
 
   // set number of cols on window resize
   const updateCols = () =>
-    store.set("cols", Math.min(6, Math.floor(window.innerWidth / 220)));
+    store.set(
+      "cols",
+      Math.min(5, Math.max(1, Math.floor(window.innerWidth / 300)))
+    );
   updateCols();
   window.addEventListener("resize", updateCols);
 });

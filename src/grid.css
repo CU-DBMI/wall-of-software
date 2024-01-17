@@ -2,12 +2,12 @@
   /* 2 / √3 */
   --ratio: 1.1547;
   --gap: 10px;
-  --cols: 6;
+  --cols: 5;
   display: grid;
-  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-template-columns: repeat(var(--cols), minmax(0, 200px));
   place-content: center;
   width: 100%;
-  padding: 40px 60px;
+  padding: 40px;
   gap: calc(var(--gap) / var(--ratio)) var(--gap);
 }
 
@@ -110,7 +110,7 @@
 .tooltip {
   position: absolute;
   bottom: calc(100% * var(--ratio) + var(--gap));
-  width: 150%;
+  width: 133%;
   max-width: max-content;
   padding: 10px 15px;
   border-radius: 5px;
