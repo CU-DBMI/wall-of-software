@@ -48,10 +48,6 @@
   background: var(--dark);
 }
 
-.cell:has(.link:hover, .link:focus) {
-  z-index: 1;
-}
-
 @keyframes link {
   from {
     opacity: 0;
