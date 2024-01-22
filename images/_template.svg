@@ -1,0 +1,21 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="-300 -300 600 600"
+  width="600"
+  height="600"
+>
+  <path
+    fill="none"
+    stroke="magenta"
+    stroke-width="3"
+    d="
+      M 259.808 -150.000
+      L 0.000 -300.000
+      L -259.808 -150.000
+      L -259.808 150.000
+      L 0.000 300.000
+      L 259.808 150.000
+      z
+    "
+  />
+</svg>

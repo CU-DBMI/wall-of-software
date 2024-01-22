@@ -4,7 +4,7 @@ document.addEventListener("alpine:init", async () => {
   // init store
   Alpine.store("store", {
     title: [],
-    list: [],
+    software: [],
     groups: [],
     count: 0,
     cols: 5,
@@ -28,12 +28,12 @@ document.addEventListener("alpine:init", async () => {
   window.countUp = async () => {
     const count = store.count;
     store.set("count", store.count + 1);
-    if (count < store.list.length - 1 || !store.list.length)
+    if (count < store.software.length - 1 || !store.software.length)
       window.setTimeout(countUp, 50);
   };
 
   // load data lists
-  store.set("list", await loadList("list.json"));
+  store.set("software", await loadList("software.json"));
   store.set("groups", await loadList("groups.json"));
 
   // set number of cols on window resize

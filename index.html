@@ -148,7 +148,7 @@
         </div>
       </section>
 
-      <!-- ---------- LIST ---------- -->
+      <!-- ---------- SOFTWARE ---------- -->
 
       <section>
         <div
@@ -157,12 +157,12 @@
           class="grid"
           :style="{ '--cols': $store.store.cols }"
         >
-          <template x-for="(entry, index) in $store.store.list">
+          <template x-for="(entry, index) in $store.store.software">
             <div
               :style="{
                 '--offset': Math.floor(index / $store.store.cols) % 2 ? -1 : 1, 
                 '--play': inView ? 'running' : 'paused',
-                '--delay': entry.order * (500 / $store.store.list.length) + 'ms',
+                '--delay': entry.order * (500 / $store.store.software.length) + 'ms',
               }"
               class="cell"
             >
@@ -252,7 +252,7 @@
               :style="{
                 '--offset': Math.floor(index / $store.store.cols) % 2 ? -1 : 1, 
                 '--play': inView ? 'running' : 'paused',
-                '--delay': entry.order * (500 / $store.store.list.length) + 'ms',
+                '--delay': entry.order * (500 / $store.store.groups.length) + 'ms',
               }"
               class="cell"
             >
@@ -277,7 +277,7 @@
 
                 <img
                   class="image"
-                  :src="`groups/${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`"
+                  :src="`images/${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`"
                   loading="lazy"
                   onerror="this.remove();"
                   aria-hidden="true"

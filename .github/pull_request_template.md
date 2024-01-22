@@ -1,4 +1,9 @@
-Submission/review checklist:
+Submitter checklist:
 
-- [ ] I have followed the submission guidelines in the `README.md`.
-- [ ] I have looked at the preview link to verify that my changes appear correctly.
+- [ ] My changes follow the guidelines in the `README.md`.
+- [ ] My changes appear correctly in the preview link (if applicable).
+
+Reviewer checklist:
+
+- [ ] The changes follow the guidelines in the `README.md`.
+- [ ] The changes appear correctly in the preview link (if applicable).
