@@ -69,7 +69,7 @@ Images should meet the following standards:
   Will it be discernible at at a distance/small size, or will it just look like noise?
   Simple shapes and colors look best.
   Small and clean text looks best.
-- **Do not** cut out a hexagon or any other shape from the background.
+- **Do not** [cut out or outline a hexagon or any other shape from the background](https://github.com/CU-DBMI/wall-of-software/assets/8326331/71a1bbdf-ec38-457e-85ac-2b8b602b328c).
   Let it cover the full dimensions of the image.
   The website/printing process will make the appropriate crop and hexagon cuts.
   If a special background shape is part of your image's inherent design, see if extending it fully looks okay, or ask for an exception to this guideline.
