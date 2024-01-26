@@ -1,5 +1,10 @@
 [
   {
+    "name": "pedbp",
+    "description": "R package for estimating pediatric blood pressure percentiles",
+    "link": "https://github.com/dewittpe/pedbp"
+  },
+  {
     "name": "Monarch Initiative",
     "description": "Integrated cross-species gene, disease, and phenotype data",
     "link": "https://monarchinitiative.org"
