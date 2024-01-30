@@ -29,6 +29,7 @@ The order of entries on the website is shuffled randomly on each page visit to n
 ### Process
 
 1. [Fork this repo and open a pull request](https://github.dev/CU-DBMI/wall-of-software) (PR) with one or more changes.
+1. Name the PR the canonical name(s) of the software/group(s) you're changing, using commas for multiple, e.g. "Word Lapse, Preprint Similarity Search".
 1. Shortly after opening the PR, a link will appear that shows a preview of the website with your changes (if any).
 1. We will review your changes, discuss or help you with them if needed, and merge the PR when everything is ready.
 1. Changes to the website will go live almost immediately, if any.
