@@ -1,7 +1,7 @@
 [
   {
     "name": "STew",
-    "description": "R package to Uncover spatially informed shared variations underlying single-cell spatial transcriptomics",
+    "description": "R package for single-cell spatial transcriptomic data integration",
     "link": "https://github.com/fanzhanglab/STew"
   },
   {
