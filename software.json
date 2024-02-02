@@ -1,5 +1,10 @@
 [
   {
+    "name": "STew",
+    "description": "R package to Uncover spatially informed shared variations underlying single-cell spatial transcriptomics",
+    "link": "https://github.com/fanzhanglab/STew"
+  },
+  {
     "name": "pedbp",
     "description": "R package for estimating pediatric blood pressure percentiles",
     "link": "https://github.com/dewittpe/pedbp"
