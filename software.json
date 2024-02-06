@@ -1,5 +1,10 @@
 [
   {
+    "name": "CCC",
+    "description": "An efficient, not-only-linear correlation coefficient",
+    "link": "https://github.com/pivlab/ccc"
+  },
+  {
     "name": "STew",
     "description": "R package for single-cell spatial transcriptomic data integration",
     "link": "https://github.com/fanzhanglab/STew"
