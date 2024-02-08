@@ -1,6 +1,6 @@
 [
   {
-    "name": "CCC",
+    "name": "Clustermatch Correlation Coefficient",
     "description": "An efficient, not-only-linear correlation coefficient",
     "link": "https://github.com/pivlab/ccc"
   },
