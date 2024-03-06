@@ -26,14 +26,14 @@
   z-index: 1;
   position: absolute;
   inset: -7.5px;
-  border: dashed 2px transparent;
+  border: solid 2px transparent;
   border-radius: 10px;
   content: "";
   pointer-events: none;
 }
 
 .button:is(:hover, :focus-visible)::after {
-  animation: button 1s ease-in-out;
+  animation: button 0.75s linear;
 }
 
 @keyframes button {

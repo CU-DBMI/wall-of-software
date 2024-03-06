@@ -1,4 +1,5 @@
 :root {
+  --black: #000000;
   --dark: #0f3d5c;
   --mid: #1ea2a4;
   --light-mid: #60dcc3;
@@ -6,7 +7,7 @@
   --pale: #fffaeb;
   --white: #fffef5;
 
-  --fast: 0.15s ease-in-out;
+  --fast: 0.25s ease-in-out;
 }
 
 *:where(:not(html, iframe, svg, img):not(svg *)) {

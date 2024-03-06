@@ -151,6 +151,33 @@
       <!-- ---------- SOFTWARE ---------- -->
 
       <section>
+        <!-- SVG FILTERS -->
+
+        <svg xmlns="http://www.w3.org/2000/svg" style="position: fixed">
+          <filter
+            id="shadow-filter"
+            x="-50%"
+            y="-50%"
+            width="200%"
+            height="200%"
+            filterUnits="objectBoundingBox"
+            primitiveUnits="userSpaceOnUse"
+            color-interpolation-filters="linearRGB"
+          >
+            <feMorphology
+              in="SourceGraphic"
+              operator="dilate"
+              radius="0"
+              result="dilate"
+            />
+            <feFlood flood-color="#00000010" result="fill" />
+            <feComposite in="fill" in2="dilate" operator="in" result="drop" />
+            <feGaussianBlur in="drop" stdDeviation="3" result="blur" />
+            <feOffset in="blur" dx="0" dy="0" result="offset" />
+            <feBlend in="SourceGraphic" in2="offset" mode="normal" />
+          </filter>
+        </svg>
+
         <div
           x-data="{ inView: false }"
           x-intersect="inView = true"
@@ -166,6 +193,27 @@
               }"
               class="cell"
             >
+              <!-- OUTLINE -->
+
+              <svg
+                viewBox="-0.866 -1 1.732 2"
+                class="outline"
+                aria-hidden="true"
+              >
+                <path
+                  pathLength="1"
+                  d="
+                    M 0.866 -0.500
+                    L 0.000 -1.000
+                    L -0.866 -0.500
+                    L -0.866 0.500
+                    L 0.000 1.000
+                    L 0.866 0.500
+                    z
+                  "
+                />
+              </svg>
+
               <!-- LINK -->
 
               <a
@@ -175,14 +223,6 @@
                 target="_blank"
                 :aria-label="`${entry.name} - ${entry.description}`"
               >
-                <!-- INITIALS -->
-
-                <div
-                  x-text="entry.name.toUpperCase().split(/[^A-Z0-9]+/g).map(word => word.charAt(0)).join('')"
-                  class="initials"
-                  aria-hidden="true"
-                ></div>
-
                 <!-- IMAGE -->
 
                 <img
@@ -210,27 +250,6 @@
                 class="tooltip"
                 aria-hidden="true"
               ></div>
-
-              <!-- OUTLINE -->
-
-              <svg
-                viewBox="-0.866 -1 1.732 2"
-                class="outline"
-                aria-hidden="true"
-              >
-                <path
-                  pathLength="1"
-                  d="
-                    M 0.866	-0.500
-                    L 0.000	-1.000
-                    L -0.866	-0.500
-                    L -0.866	0.500
-                    L 0.000	1.000
-                    L 0.866	0.500
-                    z
-                  "
-                />
-              </svg>
             </div>
           </template>
         </div>
@@ -256,6 +275,26 @@
               }"
               class="cell"
             >
+              <!-- OUTLINE -->
+
+              <svg
+                viewBox="-0.866 -1 1.732 2"
+                class="outline"
+                aria-hidden="true"
+              >
+                <path
+                  pathLength="1"
+                  d="
+                    M 0.866 -0.500
+                    L 0.000 -1.000
+                    L -0.866 -0.500
+                    L -0.866 0.500
+                    L 0.000 1.000
+                    L 0.866 0.500
+                    z
+                  "
+                />
+              </svg>
               <!-- LINK -->
 
               <a
@@ -265,14 +304,6 @@
                 target="_blank"
                 :aria-label="`${entry.name} - ${entry.description}`"
               >
-                <!-- INITIALS -->
-
-                <div
-                  x-text="entry.name.toUpperCase().split(/[^A-Z0-9]+/g).map(word => word.charAt(0)).join('')"
-                  class="initials"
-                  aria-hidden="true"
-                ></div>
-
                 <!-- IMAGE -->
 
                 <img
@@ -300,27 +331,6 @@
                 class="tooltip"
                 aria-hidden="true"
               ></div>
-
-              <!-- OUTLINE -->
-
-              <svg
-                viewBox="-0.866 -1 1.732 2"
-                class="outline"
-                aria-hidden="true"
-              >
-                <path
-                  pathLength="1"
-                  d="
-                    M 0.866	-0.500
-                    L 0.000	-1.000
-                    L -0.866	-0.500
-                    L -0.866	0.500
-                    L 0.000	1.000
-                    L 0.866	0.500
-                    z
-                  "
-                />
-              </svg>
             </div>
           </template>
         </div>

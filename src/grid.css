@@ -26,138 +26,22 @@
   position: absolute;
 }
 
-.link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1 / var(--ratio);
-  width: 100%;
-  min-height: 0;
-  gap: 5px;
-  color: var(--white);
-  text-align: center;
-  overflow-wrap: anywhere;
-  animation: link 1s var(--delay) backwards var(--play);
-  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-  transition: background var(--fast), opacity var(--fast);
-}
-
-.grid:has(.link:hover, .link:focus) .link:not(:hover, :focus) {
-  opacity: 0.5;
-}
-
-.link:hover,
-.link:focus,
-.link:not(:has(.image)) {
-  background: var(--dark);
-}
-
-@keyframes link {
-  from {
-    opacity: 0;
-  }
-}
-
-.link > * {
-  position: absolute;
-  pointer-events: none;
-}
-
-.initials {
-  font-size: 2.5rem;
-}
-
-.link:has(.image) .initials {
-  display: none;
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.initials,
-.image {
-  transition: opacity var(--fast), transform var(--fast);
-}
-
-.link:hover .initials,
-.link:focus .initials,
-.link:hover .image,
-.link:focus .image {
-  transform: scale(1.1);
-  opacity: 0;
-}
-
-.name {
-  position: relative;
-  top: -0.1em;
-  padding: 20px 10px;
-  overflow: hidden;
-  transform: scale(0.9);
-  font-size: 1.1rem;
-  opacity: 0;
-  transition: opacity var(--fast), transform var(--fast);
-}
-
-.link:hover .name,
-.link:focus .name {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.tooltip {
-  position: absolute;
-  bottom: calc(100% * var(--ratio) + var(--gap));
-  width: 133%;
-  max-width: max-content;
-  padding: 10px 15px;
-  border-radius: 5px;
-  background: var(--dark);
-  color: var(--white);
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--fast), transform var(--fast);
-  transition-delay: 0ms;
-}
-
-.cell:has(.link:hover, .link:focus) .tooltip {
-  transform: translateY(calc(-0.5 * var(--gap)));
-  opacity: 1;
-  transition-delay: 200ms;
-}
-
-.tooltip::after {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  transform: translate(-50%, -50%) rotate(-135deg);
-  background: var(--dark);
-  content: "";
-  color: var(--white);
-  clip-path: polygon(-50% -50%, 150% -50%, -50% 150%);
-  pointer-events: none;
-  transition: opacity var(--fast), transform var(--fast);
+.grid:not(:has(.link:is(:hover, :focus))) .cell {
+  filter: url(#shadow-filter);
 }
 
 .outline {
   fill: none;
   stroke-width: 0.025;
-  stroke-dasharray: 0.005 0.007;
   stroke-linecap: round;
   stroke-linejoin: round;
-  aspect-ratio: 1 / var(--ratio);
   width: calc(100% + var(--gap));
   overflow: visible;
   pointer-events: none;
 }
 
-.cell:has(.link:hover, .link:focus) .outline {
-  animation: outline 1s ease-in-out;
+.cell:has(.link:is(:hover, :focus)) .outline {
+  animation: outline 1s linear;
   --point1: 50% -100%;
   --point2: -79.904% -25%;
   --point3: -79.904% 125%;
@@ -199,4 +83,105 @@
   90% {
     stroke: var(--light);
   }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / var(--ratio);
+  width: 100%;
+  min-height: 0;
+  gap: 5px;
+  text-align: center;
+  overflow-wrap: anywhere;
+  animation: link 1s var(--delay) backwards var(--play);
+  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+  transition: background var(--fast), opacity var(--fast);
+}
+
+.link:is(:hover, :focus) {
+  background: var(--dark);
+}
+
+@keyframes link {
+  from {
+    opacity: 0;
+  }
+}
+
+.link > * {
+  position: absolute;
+  pointer-events: none;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--fast), filter var(--fast);
+}
+
+.link:is(:hover, :focus) .image {
+  opacity: 0;
+}
+
+.grid:has(.link:is(:hover, :focus)) .link:not(:is(:hover, :focus)) .image {
+  filter: contrast(0.5);
+  opacity: 0.1;
+}
+
+.name {
+  position: relative;
+  top: -0.1em;
+  padding: 20px 10px;
+  overflow: hidden;
+  font-size: 1.1rem;
+  opacity: 0;
+  transition: color var(--fast), opacity var(--fast), transform var(--fast);
+}
+
+.link:is(:hover, :focus) .name {
+  color: var(--white);
+  opacity: 1;
+}
+
+.grid:has(.link:is(:hover, :focus)) .link:not(:is(:hover, :focus)) .name {
+  opacity: 1;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% * var(--ratio) + var(--gap));
+  width: 133%;
+  max-width: max-content;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: var(--dark);
+  color: var(--white);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--fast), transform var(--fast);
+}
+
+.cell:has(.link:is(:hover, :focus)) .tooltip {
+  transform: translateY(calc(-0.5 * var(--gap)));
+  opacity: 1;
+  transition-delay: 200ms;
+}
+
+.tooltip::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%) rotate(-135deg);
+  background: var(--dark);
+  content: "";
+  color: var(--white);
+  clip-path: polygon(-50% -50%, 150% -50%, -50% 150%);
+  pointer-events: none;
+  transition: opacity var(--fast), transform var(--fast);
 }
