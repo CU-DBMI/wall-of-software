@@ -86,6 +86,7 @@
     </script>
     <script type="module" src="src/viz.js" defer></script>
     <script src="src/alpine.js"></script>
+    <script src="src/tooltips.js"></script>
   </head>
 
   <body>
@@ -151,33 +152,6 @@
       <!-- ---------- SOFTWARE ---------- -->
 
       <section>
-        <!-- SVG FILTERS -->
-
-        <svg xmlns="http://www.w3.org/2000/svg" style="position: fixed">
-          <filter
-            id="shadow-filter"
-            x="-50%"
-            y="-50%"
-            width="200%"
-            height="200%"
-            filterUnits="objectBoundingBox"
-            primitiveUnits="userSpaceOnUse"
-            color-interpolation-filters="linearRGB"
-          >
-            <feMorphology
-              in="SourceGraphic"
-              operator="dilate"
-              radius="0"
-              result="dilate"
-            />
-            <feFlood flood-color="#00000010" result="fill" />
-            <feComposite in="fill" in2="dilate" operator="in" result="drop" />
-            <feGaussianBlur in="drop" stdDeviation="3" result="blur" />
-            <feOffset in="blur" dx="0" dy="0" result="offset" />
-            <feBlend in="SourceGraphic" in2="offset" mode="normal" />
-          </filter>
-        </svg>
-
         <div
           x-data="{ inView: false }"
           x-intersect="inView = true"
@@ -242,14 +216,11 @@
 
               <div
                 x-show="entry.description.trim()"
-                x-text="
-                  entry.description.length > 90
-                    ? entry.description.slice(0, 90 - 3) + '...'
-                    : entry.description
-                "
                 class="tooltip"
                 aria-hidden="true"
-              ></div>
+              >
+                <div x-text="entry.description" class="tooltip-content"></div>
+              </div>
             </div>
           </template>
         </div>
@@ -323,14 +294,11 @@
 
               <div
                 x-show="entry.description.trim()"
-                x-text="
-                  entry.description.length > 90
-                    ? entry.description.slice(0, 90 - 3) + '...'
-                    : entry.description
-                "
                 class="tooltip"
                 aria-hidden="true"
-              ></div>
+              >
+                <div x-text="entry.description" class="tooltip-content"></div>
+              </div>
             </div>
           </template>
         </div>
