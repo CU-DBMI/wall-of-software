@@ -1,12 +1,42 @@
 [
   {
-    "name": "Greene Lab",
-    "description": "Where data and biology meet",
-    "link": "https://greenelab.com"
+    "name": "Gignoux Lab",
+    "description": "At the interface of statistical and population genetics",
+    "link": "https://www.gignouxlab.org"
+  },
+  {
+    "name": "Way Lab",
+    "description": "Biomedical data science and software for drug discovery and translational research",
+    "link": "https://www.waysciencelab.com"
+  },
+  {
+    "name": "Krishnan Lab",
+    "description": "Computing for life",
+    "link": "https://www.thekrishnanlab.org"
+  },
+  {
+    "name": "JRavi Lab",
+    "description": "Computational methods to study of microbial genotypes, phenotypes, and diseases",
+    "link": "https://jravilab.github.io"
+  },
+  {
+    "name": "Cole Lab",
+    "description": "Using large-scale human genomics to study diet and human health",
+    "link": "https://jcolelab.com"
+  },
+  {
+    "name": "Pividori Lab",
+    "description": "Computational methods for a systems biology approach to precision medicine",
+    "link": "https://pivlab.org"
   },
   {
     "name": "Zhang Lab",
-    "description": "Data-Driven Computational Omics and Systems Immunology",
+    "description": "Data-driven computational omics and systems immunology",
     "link": "https://fanzhanglab.org"
+  },
+  {
+    "name": "Greene Lab",
+    "description": "Where data and biology meet",
+    "link": "https://greenelab.com"
   }
 ]

@@ -181,9 +181,7 @@ helix.add(leftStrand);
 scene.add(helix);
 
 // draw in helix
-let drawPercent = -0.5;
-const drawHelix = () => {
-  drawPercent += 0.005;
+const drawHelix = (drawPercent) => {
   leftStrand.geometry.instanceCount =
     clamp(drawPercent) * (leftPoints.length / 3);
   rightStrand.geometry.instanceCount =
@@ -198,12 +196,10 @@ const drawHelix = () => {
     pairs.geometry.attributes.instanceEnd.setXY(index, x, y);
   }
   pairs.geometry.attributes.instanceEnd.needsUpdate = true;
-  if (drawPercent < 2) window.setTimeout(drawHelix, 10);
 };
-drawHelix();
 
 // get random point on strands
-const getStrandPoint = () => {
+const getStrandPoint = (drawPercent) => {
   const left = Math.random() > 0.5;
   const strand = left ? leftStrand : rightStrand;
   const points = left ? leftPoints : rightPoints;
@@ -267,7 +263,11 @@ scene.add(particles);
 // render frame
 const frame = () => {
   // time since last tick
-  const delta = Math.min(0.1, clock.getDelta());
+  const delta = Math.min(0.1, clock.getDelta()) || 0.013;
+
+  // draw in helix
+  const drawPercent = (clock.getElapsedTime() - 2) / 2;
+  if (drawPercent < 2) drawHelix(drawPercent);
 
   // for each element in scene
   for (const group of scene.children)
@@ -295,7 +295,8 @@ const frame = () => {
           );
 
           // init position
-          if (!position.length()) position = getStrandPoint().position;
+          if (!position.length())
+            position = getStrandPoint(drawPercent).position;
 
           // increment life
           particle.life += delta / particleDecay;
@@ -315,7 +316,7 @@ const frame = () => {
 
           // respawn
           if (particle.life > 1) {
-            const point = getStrandPoint();
+            const point = getStrandPoint(drawPercent);
             position = point.position;
             particle.startColor = point.color;
             particle.life = 0;
@@ -344,7 +345,7 @@ const frame = () => {
   if (radioactive < 0) radioactive = 0;
 
   // run frame again
-  window.setTimeout(() => window.requestAnimationFrame(frame), 10);
+  window.requestAnimationFrame(frame);
 };
 
 // radioactive effect
