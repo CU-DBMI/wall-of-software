@@ -41,8 +41,8 @@ The order of entries on the website is shuffled randomly on each page visit to n
 ### Changes
 
 1. Add an entry to **the top** of `software.json` / `groups.json`.
-   - Short ~3-20 character **name**.
-   - Short ~20-100 character **description**.
+   - Short ~3-40 character **name**.
+   - Short ~20-120 character **description**.
    - **Link** to a website or repo.
 1. Add a **website** image to `/images`.
    - Filename must be lowercase, kebab-case version of entry name, e.g. **Word Lapse** → `word-lapse`.
