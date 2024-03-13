@@ -29,7 +29,7 @@ function checkList(filename) {
     // check for associated images
     const filename = entry.name?.toLowerCase().replace(/[^a-z0-9]+/g, "-");
     const image = `./images/${filename}.png`;
-    const print = `./images/${filename}.png`;
+    const print = `./print/${filename}.png`;
     if (!existsSync(image)) throw Error(`Missing image "${image}"`);
     if (!existsSync(print)) throw Error(`Missing image "${print}"`);
 
