@@ -33,6 +33,7 @@ The order of entries on the website is shuffled randomly on each page visit to n
    Check "Allow edits by maintainers".
    Name the PR the canonical name(s) of the software/group(s) you're changing, using commas for multiple, e.g. "Word Lapse, Preprint Similarity Search".
 1. Shortly after opening the PR, a link will appear that shows a preview of the website with your changes (if any).
+   Add `?print` at the end of the url to view the print versions of images instead.
 1. We will review your changes, discuss or help you with them if needed, and merge the PR when everything is ready.
 1. Changes to the website will go live almost immediately, if any.
    We'll start ordering your stickers, if any.

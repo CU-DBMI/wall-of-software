@@ -201,7 +201,7 @@
 
                 <img
                   class="image"
-                  :src="`images/${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`"
+                  :src="`${$store.store.folder}/${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`"
                   loading="lazy"
                   onerror="this.remove();"
                   aria-hidden="true"
@@ -279,7 +279,7 @@
 
                 <img
                   class="image"
-                  :src="`images/${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`"
+                  :src="`${$store.store.folder}/${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`"
                   loading="lazy"
                   onerror="this.remove();"
                   aria-hidden="true"

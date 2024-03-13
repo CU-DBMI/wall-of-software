@@ -3,6 +3,7 @@
 document.addEventListener("alpine:init", async () => {
   // init store
   Alpine.store("store", {
+    folder: window.location.search.includes("print") ? "print" : "images",
     title: [],
     software: [],
     groups: [],
