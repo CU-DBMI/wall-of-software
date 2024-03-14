@@ -2,16 +2,14 @@ const { readdirSync, readFileSync, existsSync } = require("fs");
 const { execSync } = require("child_process");
 
 // strip all metadata to ensure consistency
-execSync("exiftool -All= -r -overwrite_original ./images", {
-  stdio: "inherit",
-});
-execSync("exiftool -All= -r -overwrite_original ./print", { stdio: "inherit" });
-
-checkList("software.json");
-checkList("groups.json");
+exec("exiftool -All= -r -overwrite_original ./images");
+exec("exiftool -All= -r -overwrite_original ./print");
 
 checkDimensions("./images", 600, 600);
 checkDimensions("./print", 1200, 1200);
+
+checkList("software.json");
+checkList("groups.json");
 
 // check list of entries in json file
 function checkList(filename) {
@@ -56,15 +54,13 @@ function checkDimensions(
     .map((filename) => `${directory}/${filename}`);
 
   for (const [index, path] of Object.entries(paths)) {
-    console.info(
-      `Checking dimensions "${path}" (${+index + 1} of ${paths.length})`
-    );
+    console.info(`Checking "${path}" (${+index + 1} of ${paths.length})`);
 
     // extract dimensions
-    const [width, height] = execSync(
-      `exiftool -s -s -s -ImageWidth -ImageHeight ${path}`
+    const [width, height] = exec(
+      `exiftool -s3 -ImageWidth -ImageHeight ${path}`,
+      false
     )
-      .toString()
       .split(/\s/)
       .filter(Boolean)
       .map(Number);
@@ -74,5 +70,16 @@ function checkDimensions(
       throw Error(
         `${width} × ${height}, expected ${expectedWidth} × ${expectedHeight}`
       );
+
+    // check color space
+    const colorspace = exec(`exiftool -s3 -ColorType ${path}`, false);
+    if (!colorspace.toLowerCase().includes("rgb"))
+      throw Error(`Colorspace "${colorspace}", expected RGB`);
   }
+}
+
+function exec(command, print = true) {
+  const result = execSync(command).toString().trim();
+  if (print) console.log(result);
+  return result;
 }
