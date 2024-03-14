@@ -1,5 +1,10 @@
 [
   {
+    "name": "phoenix",
+    "description": "Implementation of the Phoenix and Phoenix-8 Pediatric Sepsis and Septic Shock Criteria",
+    "link": "https://cu-dbmi-peds.github.io/phoenix/"
+  },
+  {
     "name": "Clustermatch Correlation Coefficient",
     "description": "An efficient, not-only-linear correlation coefficient",
     "link": "https://github.com/pivlab/ccc"
