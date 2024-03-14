@@ -33,6 +33,7 @@ The order of entries on the website is shuffled randomly on each page visit to n
    Check "Allow edits by maintainers".
    Name the PR the canonical name(s) of the software/group(s) you're changing, using commas for multiple, e.g. "Word Lapse, Preprint Similarity Search".
 1. Shortly after opening the PR, a link will appear that shows a preview of the website with your changes (if any).
+   Add `?print` at the end of the url to view the print versions of images instead.
 1. We will review your changes, discuss or help you with them if needed, and merge the PR when everything is ready.
 1. Changes to the website will go live almost immediately, if any.
    We'll start ordering your stickers, if any.
@@ -40,8 +41,8 @@ The order of entries on the website is shuffled randomly on each page visit to n
 ### Changes
 
 1. Add an entry to **the top** of `software.json` / `groups.json`.
-   - Short ~3-20 character **name**.
-   - Short ~20-100 character **description**.
+   - Short ~3-40 character **name**.
+   - Short ~20-120 character **description**.
    - **Link** to a website or repo.
 1. Add a **website** image to `/images`.
    - Filename must be lowercase, kebab-case version of entry name, e.g. **Word Lapse** → `word-lapse`.

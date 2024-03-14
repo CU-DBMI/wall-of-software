@@ -1,8 +1,13 @@
 // reactive render html
 
+// url flags
+const noShuffle = window.location.search.includes("order");
+const print = window.location.search.includes("print");
+
 document.addEventListener("alpine:init", async () => {
   // init store
   Alpine.store("store", {
+    folder: print ? "print" : "images",
     title: [],
     software: [],
     groups: [],
@@ -51,7 +56,7 @@ const loadList = async (url) => {
   try {
     let list = await (await fetch(url)).json();
     list = list.map((entry, index) => ({ ...entry, order: index }));
-    shuffle(list);
+    if (!noShuffle && !print) shuffle(list);
     return list;
   } catch (error) {
     return [];
