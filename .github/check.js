@@ -1,15 +1,17 @@
 const { readdirSync, readFileSync, existsSync } = require("fs");
 const { execSync } = require("child_process");
 
+// strip all metadata to ensure consistency
+execSync("exiftool -All= -r -overwrite_original ./images", {
+  stdio: "inherit",
+});
+execSync("exiftool -All= -r -overwrite_original ./print", { stdio: "inherit" });
+
 checkList("software.json");
 checkList("groups.json");
 
 checkDimensions("./images", 600, 600);
 checkDimensions("./print", 1200, 1200);
-
-// strip all metadata to ensure consistency
-execSync("exiftool -All= -r -overwrite_original ./images");
-execSync("exiftool -All= -r -overwrite_original ./print");
 
 // check list of entries in json file
 function checkList(filename) {
