@@ -1,5 +1,10 @@
 [
   {
+    "name": "summix",
+    "description": "R package for estimating and leveraging substructure in genetic summary allele frequency data",
+    "link": "https://bioconductor.org/packages/release/bioc/html/Summix.html"
+  },
+  {
     "name": "phoenix",
     "description": "Implementation of the Phoenix and Phoenix-8 Pediatric Sepsis and Septic Shock Criteria",
     "link": "https://cu-dbmi-peds.github.io/phoenix/"
