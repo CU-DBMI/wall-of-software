@@ -12,8 +12,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install packages
+        run: |
+          bun add exiftool-vendored@26
+          bun install
+
       - name: Run script
-        run: node ./.github/clean.js
+        run: bun ./.github/clean.js
 
       - name: Commit changed files
         uses: stefanzweifel/git-auto-commit-action@v5

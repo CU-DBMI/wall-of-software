@@ -1,8 +1,19 @@
-const { exec } = require("./util");
+import { readdirSync, unlinkSync } from "fs";
+import { ExifTool } from "exiftool-vendored";
 
-// install exiftool
-exec("sudo apt install exiftool");
+const exiftool = new ExifTool({ taskTimeoutMillis: 5000 });
 
-// strip all metadata to ensure consistency
-exec("exiftool -All= -r -overwrite_original ./images");
-exec("exiftool -All= -r -overwrite_original ./print");
+await stripMeta("./images");
+await stripMeta("./print");
+
+exiftool.end();
+
+// strip all metadata from all images in folder to ensure consistency
+async function stripMeta(folder) {
+  await exiftool.deleteAllTags(folder, ["-recurse", "-overwrite_original"]);
+  // delete originals
+  readdirSync(folder)
+    .filter((filename) => filename.endsWith("_original"))
+    .map((filename) => `${folder}/${filename}`)
+    .forEach(unlinkSync);
+}

@@ -30,7 +30,6 @@ The order of entries on the website is shuffled randomly on each page visit to n
 
 1. [Fork this repo](https://github.dev/CU-DBMI/wall-of-software) and make one or more changes.
 1. Open a pull request (PR).
-   Check "Allow edits by maintainers".
    Name the PR the canonical name(s) of the software/group(s) you're changing, using commas for multiple, e.g. "Word Lapse, Preprint Similarity Search".
 1. Shortly after opening the PR, a link will appear that shows a preview of the website with your changes (if any).
    Add `?print` at the end of the url to view the print versions of images instead.
@@ -59,7 +58,7 @@ To remove/change entries, edit the above files as needed.
 
 ## Images
 
-Images should meet the following standards:
+Images must meet the following standards:
 
 - Unique, visually appealing logo or other graphical representation of your software/group.
 - Not up-scaled, stretched, or otherwise blurry/noisy/distorted/etc.

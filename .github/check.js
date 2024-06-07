@@ -1,14 +1,15 @@
-const { readdirSync, readFileSync, existsSync } = require("fs");
-const { exec } = require("./util");
+import { readdirSync, readFileSync, existsSync } from "fs";
+import { ExifTool } from "exiftool-vendored";
 
-// install exiftool
-exec("sudo apt install exiftool");
+const exiftool = new ExifTool({ taskTimeoutMillis: 5000 });
 
-checkDimensions("./images", 600, 600);
-checkDimensions("./print", 1200, 1200);
+await checkDimensions("./images", 600, 600);
+await checkDimensions("./print", 1200, 1200);
 
 checkList("software.json");
 checkList("groups.json");
+
+exiftool.end();
 
 // check list of entries in json file
 function checkList(filename) {
@@ -40,29 +41,27 @@ function checkList(filename) {
   }
 }
 
-// check dimensions of images in directory
-function checkDimensions(
-  directory,
+// check dimensions of images in folder
+async function checkDimensions(
+  folder,
   expectedWidth,
   expectedHeight,
   extension = "png"
 ) {
-  // get all images matching extension in directory
-  const paths = readdirSync(directory)
+  // get all images matching extension in folder
+  const paths = readdirSync(folder)
     .filter((filename) => filename.endsWith(`.${extension}`))
-    .map((filename) => `${directory}/${filename}`);
+    .map((filename) => `${folder}/${filename}`);
 
   for (const [index, path] of Object.entries(paths)) {
     console.info(`Checking "${path}" (${+index + 1} of ${paths.length})`);
 
     // extract dimensions
-    const [width, height] = exec(
-      `exiftool -s3 -ImageWidth -ImageHeight ${path}`,
-      false
-    )
-      .split(/\s/)
-      .filter(Boolean)
-      .map(Number);
+    const {
+      ImageWidth: width,
+      ImageHeight: height,
+      ColorType: colorspace,
+    } = await exiftool.read(path);
 
     // check dimensions
     if (width !== expectedWidth || height !== expectedHeight)
@@ -71,7 +70,6 @@ function checkDimensions(
       );
 
     // check color space
-    const colorspace = exec(`exiftool -s3 -ColorType ${path}`, false);
     if (!colorspace.toLowerCase().includes("rgb"))
       throw Error(`Colorspace "${colorspace}", expected RGB`);
   }
