@@ -3,10 +3,8 @@ import { ExifTool } from "exiftool-vendored";
 
 const exiftool = new ExifTool();
 
-(async () => {
-  await stripMeta("./images");
-  await stripMeta("./print");
-})();
+await stripMeta("./images");
+await stripMeta("./print");
 
 await exiftool.end();
 

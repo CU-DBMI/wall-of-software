@@ -3,15 +3,13 @@ import { ExifTool } from "exiftool-vendored";
 
 const exiftool = new ExifTool();
 
-(async () => {
-  await checkDimensions("./images", 600, 600);
-  await checkDimensions("./print", 1200, 1200);
+await checkDimensions("./images", 600, 600);
+await checkDimensions("./print", 1200, 1200);
 
-  checkList("software.json");
-  checkList("groups.json");
+checkList("software.json");
+checkList("groups.json");
 
-  await exiftool.end();
-})();
+await exiftool.end();
 
 // check list of entries in json file
 function checkList(filename) {
