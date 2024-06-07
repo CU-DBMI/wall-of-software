@@ -21,4 +21,4 @@ jobs:
         uses: mxschmitt/action-tmate@v3
 
       - name: Run script
-        run: bun ./.github/check.mjs
+        run: node ./.github/check.mjs
