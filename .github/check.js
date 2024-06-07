@@ -1,15 +1,17 @@
 import { readdirSync, readFileSync, existsSync } from "fs";
 import { ExifTool } from "exiftool-vendored";
 
-const exiftool = new ExifTool({ taskTimeoutMillis: 5000 });
+(async () => {
+  const exiftool = new ExifTool({ taskTimeoutMillis: 5000 });
 
-await checkDimensions("./images", 600, 600);
-await checkDimensions("./print", 1200, 1200);
+  await checkDimensions("./images", 600, 600);
+  await checkDimensions("./print", 1200, 1200);
 
-checkList("software.json");
-checkList("groups.json");
+  checkList("software.json");
+  checkList("groups.json");
 
-exiftool.end();
+  exiftool.end();
+})();
 
 // check list of entries in json file
 function checkList(filename) {
@@ -56,7 +58,7 @@ async function checkDimensions(
   for (const [index, path] of Object.entries(paths)) {
     console.info(`Checking "${path}" (${+index + 1} of ${paths.length})`);
 
-    // extract dimensions
+    // extract metadata
     const {
       ImageWidth: width,
       ImageHeight: height,
