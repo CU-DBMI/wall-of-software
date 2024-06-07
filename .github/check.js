@@ -1,9 +1,9 @@
 import { readdirSync, readFileSync, existsSync } from "fs";
 import { ExifTool } from "exiftool-vendored";
 
-(async () => {
-  const exiftool = new ExifTool({ taskTimeoutMillis: 5000 });
+const exiftool = new ExifTool({ taskTimeoutMillis: 5000 });
 
+(async () => {
   await checkDimensions("./images", 600, 600);
   await checkDimensions("./print", 1200, 1200);
 

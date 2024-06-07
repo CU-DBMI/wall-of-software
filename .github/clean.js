@@ -1,9 +1,9 @@
 import { readdirSync, unlinkSync } from "fs";
 import { ExifTool } from "exiftool-vendored";
 
-(async () => {
-  const exiftool = new ExifTool({ taskTimeoutMillis: 5000 });
+const exiftool = new ExifTool({ taskTimeoutMillis: 5000 });
 
+(async () => {
   await stripMeta("./images");
   await stripMeta("./print");
 
