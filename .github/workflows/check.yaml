@@ -14,18 +14,11 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Set up Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
       - name: Install packages
-        run: |
-          bun add exiftool-vendored@26
-          bun install
+        run: npm install exiftool-vendored@26
 
       - if: runner.debug == '1'
         uses: mxschmitt/action-tmate@v3
 
       - name: Run script
-        run: bun ./.github/check.js
+        run: bun ./.github/check.mjs

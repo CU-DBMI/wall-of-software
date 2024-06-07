@@ -1,14 +1,14 @@
 import { readdirSync, unlinkSync } from "fs";
 import { ExifTool } from "exiftool-vendored";
 
-const exiftool = new ExifTool({ taskTimeoutMillis: 5000 });
+const exiftool = new ExifTool();
 
 (async () => {
   await stripMeta("./images");
   await stripMeta("./print");
-
-  exiftool.end();
 })();
+
+await exiftool.end();
 
 // strip all metadata from all images in folder to ensure consistency
 async function stripMeta(folder) {

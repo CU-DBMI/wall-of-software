@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync, existsSync } from "fs";
 import { ExifTool } from "exiftool-vendored";
 
-const exiftool = new ExifTool({ taskTimeoutMillis: 5000 });
+const exiftool = new ExifTool();
 
 (async () => {
   await checkDimensions("./images", 600, 600);
@@ -10,7 +10,7 @@ const exiftool = new ExifTool({ taskTimeoutMillis: 5000 });
   checkList("software.json");
   checkList("groups.json");
 
-  exiftool.end();
+  await exiftool.end();
 })();
 
 // check list of entries in json file

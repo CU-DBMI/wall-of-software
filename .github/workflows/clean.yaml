@@ -12,21 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
       - name: Install packages
-        run: |
-          bun add exiftool-vendored@26
-          bun install
+        run: npm install exiftool-vendored@26
 
       - if: runner.debug == '1'
         uses: mxschmitt/action-tmate@v3
 
       - name: Run script
-        run: bun ./.github/clean.js
+        run: bun ./.github/clean.mjs
 
       - name: Commit changed files
         uses: stefanzweifel/git-auto-commit-action@v5
