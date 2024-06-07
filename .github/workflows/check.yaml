@@ -24,5 +24,8 @@ jobs:
           bun add exiftool-vendored@26
           bun install
 
+      - if: runner.debug == '1'
+        uses: mxschmitt/action-tmate@v3
+
       - name: Run script
         run: bun ./.github/check.js
