@@ -1,9 +1,8 @@
 const { readdirSync, readFileSync, existsSync } = require("fs");
-const { execSync } = require("child_process");
+const { exec } = require("./util");
 
-// strip all metadata to ensure consistency
-exec("exiftool -All= -r -overwrite_original ./images");
-exec("exiftool -All= -r -overwrite_original ./print");
+// install exiftool
+exec("sudo apt install exiftool");
 
 checkDimensions("./images", 600, 600);
 checkDimensions("./print", 1200, 1200);
@@ -76,10 +75,4 @@ function checkDimensions(
     if (!colorspace.toLowerCase().includes("rgb"))
       throw Error(`Colorspace "${colorspace}", expected RGB`);
   }
-}
-
-function exec(command, print = true) {
-  const result = execSync(command).toString().trim();
-  if (print) console.log(result);
-  return result;
 }

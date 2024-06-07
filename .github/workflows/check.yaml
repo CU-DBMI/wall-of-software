@@ -1,6 +1,9 @@
-name: Check and clean files
+name: Check files
 
-on: pull_request
+on:
+  pull_request:
+    branches:
+      - main
 
 jobs:
   check:
@@ -11,13 +14,5 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Install exiftool
-        run: sudo apt install exiftool
-
       - name: Run script
         run: node ./.github/check.js
-
-      - name: Commit changed files
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Update files"
