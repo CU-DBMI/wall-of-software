@@ -1,4 +1,14 @@
 [
+   {
+    "name": "Hendricks Lab",
+    "description": "The lynch pin between biomedical research and statistical and machine learning method development",
+    "link": "https://audreyhendricks.com/"
+  },
+   {
+    "name": "PATH-GDS",
+    "description": "PATHways in Genomic Data Science Masters program",
+    "link": "https://hendricks-research-team.github.io/PATHGDS/Info.html"
+  },
   {
     "name": "Gignoux Lab",
     "description": "At the interface of statistical and population genetics",
