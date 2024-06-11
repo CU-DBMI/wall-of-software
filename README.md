@@ -60,6 +60,9 @@ To remove/change entries, edit the above files as needed.
 
 Images must meet the following standards:
 
+- **Do NOT** [**cut out or outline a hexagon**](https://github.com/CU-DBMI/wall-of-software/assets/8326331/71a1bbdf-ec38-457e-85ac-2b8b602b328c), let the background cover the full dimensions of the image.
+  The website/printing process will make the appropriate crop and hexagon cuts for you.
+  Doing it yourself can result in [bleed](https://www.google.com/search?q=printing+bleed) issues in printing/display (mishapen edges, unprinted slivers, etc.).
 - Unique, visually appealing logo or other graphical representation of your software/group.
 - Not up-scaled, stretched, or otherwise blurry/noisy/distorted/etc.
   Ideally, start from an `.svg` version of your image, and [rasterize it](https://vincerubinetti.github.io/svg-to-png/) to the exact dimensions needed.
@@ -72,9 +75,6 @@ Images must meet the following standards:
   Will it be discernible at at a distance/small size, or will it just look like noise?
   Simple shapes and colors look best.
   Small and clean text looks best.
-- **Do not** [cut out or outline a hexagon or any other shape from the background](https://github.com/CU-DBMI/wall-of-software/assets/8326331/71a1bbdf-ec38-457e-85ac-2b8b602b328c).
-  Let it cover the full dimensions of the image.
-  The website/printing process will make the appropriate crop and hexagon cuts.
-  If a special background shape is part of your image's inherent design, see if extending it fully looks okay, or ask for an exception to this guideline.
 
 If in doubt, **look at other submissions on the wall** and try to be consistent with them.
+If you can't meet these guidlines, ask for help or an exception.
