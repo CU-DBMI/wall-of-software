@@ -1,18 +1,16 @@
-name: Check files
+name: Clean files
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
-  check:
+  clean:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: Install packages
         run: npm install exiftool-vendored@26
@@ -21,4 +19,9 @@ jobs:
         uses: mxschmitt/action-tmate@v3
 
       - name: Run script
-        run: node ./.github/check.mjs
+        run: node ./.github/clean.mjs
+
+      - name: Commit changed files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Clean files"
