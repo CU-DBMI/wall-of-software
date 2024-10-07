@@ -1,5 +1,10 @@
 [
   {
+    "name": "CCAFE",
+    "description": "Case and control allele frequency estimation from GWAS summary statistics R package",
+    "link": "https://github.com/wolffha/CCAFE"
+  },
+  {
     "name": "summix",
     "description": "R package for estimating and leveraging substructure in genetic summary allele frequency data",
     "link": "https://bioconductor.org/packages/release/bioc/html/Summix.html"
