@@ -1,5 +1,10 @@
 [
   {
+    "name": "ReviewR",
+    "description": "A Shiny tool for performing manual review of electronic medical records",
+    "link": "https://reviewr.thewileylab.org/"
+  },
+  {
     "name": "summix",
     "description": "R package for estimating and leveraging substructure in genetic summary allele frequency data",
     "link": "https://bioconductor.org/packages/release/bioc/html/Summix.html"
