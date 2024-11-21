@@ -3,7 +3,7 @@ name: Check files
 on:
   pull_request:
     branches:
-      - gha_ref
+      - main
 
 jobs:
   check:
