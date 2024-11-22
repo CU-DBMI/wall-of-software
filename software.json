@@ -1,5 +1,10 @@
 [
   {
+    "name": "coRgi",
+    "description": "Woof!",
+    "link": "https://en.wikipedia.org/wiki/Welsh_Corgi"
+  },
+  {
     "name": "summix",
     "description": "R package for estimating and leveraging substructure in genetic summary allele frequency data",
     "link": "https://bioconductor.org/packages/release/bioc/html/Summix.html"
