@@ -1,5 +1,10 @@
 [
   {
+    "name": "CCAFE",
+    "description": "Case and control allele frequency estimation from GWAS summary statistics R package",
+    "link": "https://github.com/wolffha/CCAFE"
+  },
+  {
     "name": "ReviewR",
     "description": "A Shiny tool for performing manual review of electronic medical records",
     "link": "https://reviewr.thewileylab.org/"
