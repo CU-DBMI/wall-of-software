@@ -35,11 +35,6 @@
     "link": "https://github.com/dewittpe/pedbp"
   },
   {
-    "name": "Monarch Initiative",
-    "description": "Integrated cross-species gene, disease, and phenotype data",
-    "link": "https://monarchinitiative.org"
-  },
-  {
     "name": "PyCytominer",
     "description": "Package for processing image-based profiling data",
     "link": "https://pycytominer.readthedocs.io"
