@@ -1,5 +1,10 @@
 [
   {
+    "name": "coSMicQC",
+    "description": "Single cell Morphology Quality Control (coSMicQC)",
+    "link": "https://github.com/WayScience/coSMicQC"
+  },
+  {
     "name": "CCAFE",
     "description": "Case and control allele frequency estimation from GWAS summary statistics R package",
     "link": "https://github.com/wolffha/CCAFE"
