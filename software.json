@@ -1,5 +1,15 @@
 [
   {
+    "name": "APRICOT",
+    "description": "R package for power analysis of causal variant discoveries in admixed populations",
+    "link": "https://github.com/menglin44/apricot"
+  },
+  {
+    "name":"ESCALATOR",
+    "description": "Polygenic score harmonization and calculation pipeline",
+    "link": "https://github.com/menglin44/ESCALATOR"
+  },
+  {
     "name": "coSMicQC",
     "description": "Single cell Morphology Quality Control (coSMicQC)",
     "link": "https://github.com/WayScience/coSMicQC"
