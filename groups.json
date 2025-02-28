@@ -1,5 +1,10 @@
 [
-   {
+  {
+    "name": "Dashnow Lab",
+    "description": "Empowering genetic diagnostics through computational methods development",
+    "link": "https://dashnowlab.org/"
+  },
+  {
     "name": "Hendricks Lab",
     "description": "The lynch pin between biomedical research and statistical and machine learning method development",
     "link": "https://audreyhendricks.com/"
