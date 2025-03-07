@@ -1,5 +1,10 @@
 [
   {
+    "name":"LARK Lab",
+    "description":"Language, Reasoning and Knowledge Lab for NLP and AI research",
+    "link":"https://www.larknlp.com/"
+  },
+  {
     "name": "RKJ collab",
     "description": "Population health and precision prevention",
     "link": "https://github.com/rkjcollab"
