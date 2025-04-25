@@ -1,5 +1,10 @@
 [
   {
+    "name": "Software Gardening Almanack",
+    "description": "Open-source handbook and Python package for sustainable software development and maintenance.",
+    "link": "https://github.com/software-gardening/almanack"
+  },
+  {
     "name": "APRICOT",
     "description": "R package for power analysis of causal variant discoveries in admixed populations",
     "link": "https://github.com/menglin44/apricot"

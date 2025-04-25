@@ -1,5 +1,10 @@
 [
   {
+    "name":"Software Gardening",
+    "description":"Software Gardening is an ecosystem of applied guidance and tools for sustainable software development and maintenance.",
+    "link":"https://github.com/software-gardening"
+  },
+  {
     "name":"LARK Lab",
     "description":"Language, Reasoning and Knowledge Lab for NLP and AI research",
     "link":"https://www.larknlp.com/"
