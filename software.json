@@ -1,5 +1,10 @@
 [
   {
+    "name": "PONG",
+    "description": "R package for Allele imputation of killer cell immunoglobulin-like receptor KIR3DL1/S1.",
+    "link": "https://github.com/NormanLabUCD/PONG"
+  },
+  {
     "name": "Software Gardening Almanack",
     "description": "Open-source handbook and Python package for sustainable software development and maintenance.",
     "link": "https://github.com/software-gardening/almanack"
