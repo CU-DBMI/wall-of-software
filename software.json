@@ -1,5 +1,10 @@
 [
   {
+    "name": "CytoDataFrame",
+    "description": "An in-memory data analysis format for single-cell profiles alongside their corresponding images and segmentation masks.",
+    "link": "https://github.com/cytomining/cytodataframe"
+  },
+  {
     "name": "Software Gardening Almanack",
     "description": "Open-source handbook and Python package for sustainable software development and maintenance.",
     "link": "https://github.com/software-gardening/almanack"
@@ -17,7 +22,7 @@
   {
     "name": "coSMicQC",
     "description": "Single cell Morphology Quality Control (coSMicQC)",
-    "link": "https://github.com/WayScience/coSMicQC"
+    "link": "https://github.com/cytomining/coSMicQC"
   },
   {
     "name": "CCAFE",
