@@ -1,5 +1,10 @@
 [
   {
+    "name": "medicalcoder",
+    "description": "Tools for Working with ICD Codes and Comorbidity Algorithms",
+    "link": "https://dewittpe.github.io/medicalcolder/"
+  },
+  {
     "name": "CytoDataFrame",
     "description": "An in-memory data analysis format for single-cell profiles alongside their corresponding images and segmentation masks.",
     "link": "https://github.com/cytomining/cytodataframe"
