@@ -1,7 +1,7 @@
 [
   {
     "name": "CellPhenoX",
-    "description": "An eXplainable Cell-specific machine learning method to predict clinical Phenotypes using single-cell multi-omics",
+    "description": "An eXplainable Cell-specific ML method to predict clinical Phenotypes using single-cell multi-omics",
     "link": "https://pycellphenox.readthedocs.io/en/latest/"
   },
   {
