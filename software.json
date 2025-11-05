@@ -1,5 +1,15 @@
 [
   {
+    "name": "CellPhenoX",
+    "description": "An eXplainable Cell-specific ML method to predict clinical Phenotypes using single-cell multi-omics",
+    "link": "https://pycellphenox.readthedocs.io/en/latest/"
+  },
+  {
+    "name": "STEAM",
+    "description": "Evaluating consistency and reliability of clustering in spatial omics using STEAM",
+    "link": "https://github.com/fanzhanglab/STEAM"
+  },
+  {
     "name": "medicalcoder",
     "description": "Tools for Working with ICD Codes and Comorbidity Algorithms",
     "link": "https://dewittpe.github.io/medicalcoder/"
