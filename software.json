@@ -133,5 +133,10 @@
     "name": "Manubot",
     "description": "Manuscripts, open and automated",
     "link": "https://manubot.org"
-  }
+  },
+   {
+    "name": "CLAMP",
+    "description": "R package for extracting interpretable latent variables from large transcriptomic datasets using biological knowledge.",
+    "link": "https://github.com/chikinalab/CLAMP"
+  },
 ]
