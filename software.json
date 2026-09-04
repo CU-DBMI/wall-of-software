@@ -138,5 +138,10 @@
     "name": "CLAMP",
     "description": "R package for extracting interpretable latent variables from large transcriptomic datasets using biological knowledge.",
     "link": "https://github.com/chikinalab/CLAMP"
+  },
+  {
+    "name": "GRiD",
+    "description": "Haplotype-resolved large VNTR copy number estimation from sequencing depth.",
+    "link": "https://github.com/caterer-z-t/GRiD"
   }
 ]
